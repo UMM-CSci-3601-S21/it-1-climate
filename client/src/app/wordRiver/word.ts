@@ -1,4 +1,4 @@
 export interface Word {
   word: string;
-  forms: String[];
+  forms: string[];
 }
