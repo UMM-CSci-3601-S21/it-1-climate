@@ -1,5 +1,7 @@
 package umm3601.wordRiver;
 
+import java.util.ArrayList;
+
 import org.mongojack.Id;
 import org.mongojack.ObjectId;
 
@@ -12,5 +14,5 @@ public class ContextPack {
   public String name;
   public String icon;
   public boolean enabled;
-  public WordList[] wordlist;
+  public ArrayList<WordList> wordlist;
 }
