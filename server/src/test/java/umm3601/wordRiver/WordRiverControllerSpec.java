@@ -299,5 +299,41 @@ public void secureSchema() {
   schema.schema);
   }
 
+@Test
+public void GetContextPackWithExistentId() throws IOException {
+
+  String testID = batmanId.toHexString();
+
+  Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id", ImmutableMap.of("id", testID));
+  wordRiverController.getPack(ctx);
+
+  assertEquals(200, mockRes.getStatus());
+
+  String result = ctx.resultString();
+  ContextPack resultPack = JavalinJson.fromJson(result, ContextPack.class);
+
+  assertEquals(resultPack._id, batmanId.toHexString());
+  assertEquals(resultPack.name, "batman");
+}
+
+@Test
+  public void GetContextPackWithBadId() throws IOException {
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id", ImmutableMap.of("id", "bad"));
+
+    assertThrows(BadRequestResponse.class, () -> {
+      wordRiverController.getPack(ctx);
+    });
   }
+
+@Test
+  public void GetContextPackWithNonexistentId() throws IOException {
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id", ImmutableMap.of("id", "58af3a600343927e48e87335"));
+
+    assertThrows(NotFoundResponse.class, () -> {
+      wordRiverController.getPack(ctx);
+    });
+  }
+
 }
