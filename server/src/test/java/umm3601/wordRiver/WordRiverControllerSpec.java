@@ -76,29 +76,44 @@ public void setupEach() throws IOException {
   List<Document> testPacks = new ArrayList<>();
   testPacks.add(
     new Document()
-      .append("$schema", "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json")
+      //.append("$schema", "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json")
       .append("name", "iron man")
-      .append("icon", " ")
+      .append("icon", "iron.png")
       .append("enabled", "true")
-      .append("wordLists", " "));
+      .append("wordlist", Arrays.asList(new Document().append("name", "iron man").append("enabled", true)
+      .append("nouns", Arrays.asList(new Document("word", "suit").append("forms", Arrays.asList("suits"))))
+      .append("verbs", Arrays.asList(new Document("word", "fight").append("forms", Arrays.asList("fights"))))
+      .append("adjectives", Arrays.asList(new Document("word", "big").append("forms", Arrays.asList("biggish"))))
+      .append("misc", Arrays.asList(new Document("word", "the").append("forms", Arrays.asList("the")))) )
+      ));
 
     testPacks.add(
       new Document()
-      .append("$schema", "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json")
+      //.append("$schema", "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json")
       .append("name", "captain america")
-      .append("icon", " ")
+      .append("icon", "cap.png")
       .append("enabled", "false")
-      .append("wordLists", " "));
+      .append("wordlist", Arrays.asList(new Document().append("name", "iron man").append("enabled", true)
+      .append("nouns", Arrays.asList(new Document("word", "suit").append("forms", Arrays.asList("suits"))))
+      .append("verbs", Arrays.asList(new Document("word", "fight").append("forms", Arrays.asList("fights"))))
+      .append("adjectives", Arrays.asList(new Document("word", "big").append("forms", Arrays.asList("biggish"))))
+      .append("misc", Arrays.asList(new Document("word", "the").append("forms", Arrays.asList("the")))) )
+      ));
 
   batmanId = new ObjectId();
   Document batman =
     new Document()
       .append("_id", batmanId)
-      .append("$schema", "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json")
+      //.append("$schema", "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json")
       .append("name","batman")
-      .append("icon", " ")
+      .append("icon", "batman.png")
       .append("enabled", "true")
-      .append("wordLists", " ");
+      .append("wordlist", Arrays.asList( new Document().append("name", "iron man").append("enabled", true)
+      .append("nouns", Arrays.asList(new Document("word", "suit").append("forms", Arrays.asList("suits"))))
+      .append("verbs", Arrays.asList(new Document("word", "fight").append("forms", Arrays.asList("fights"))))
+      .append("adjectives", Arrays.asList(new Document("word", "big").append("forms", Arrays.asList("biggish"))))
+      .append("misc", Arrays.asList(new Document("word", "the").append("forms", Arrays.asList("the"))))
+      ));
 
   ctxDocuments.insertMany(testPacks);
   ctxDocuments.insertOne(batman);
