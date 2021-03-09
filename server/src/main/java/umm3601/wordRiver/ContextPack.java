@@ -10,7 +10,7 @@ public class ContextPack {
   @ObjectId @Id
   public String _id;
 
-  public String $schema = "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json";
+  public String schema = "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json";
   public String name;
   public String icon;
   public boolean enabled;

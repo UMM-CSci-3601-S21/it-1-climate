@@ -32,7 +32,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { UserCardComponent } from './users/user-card.component';
 import { UserProfileComponent } from './users/user-profile.component';
 import { AddUserComponent } from './users/add-user.component';
-import { CpListComponent } from './contextPacks/cp-list.component';
+import { CpListComponent } from './wordRiver/contextPacks/cp-list.component';
+import { ContextPackService } from './wordRiver/context-pack.service';
 
 const MATERIAL_MODULES: any[] = [
   MatListModule,
@@ -75,7 +76,8 @@ const MATERIAL_MODULES: any[] = [
     LayoutModule,
   ],
   providers: [
-    UserService
+    UserService,
+    ContextPackService
   ],
   bootstrap: [AppComponent]
 })
