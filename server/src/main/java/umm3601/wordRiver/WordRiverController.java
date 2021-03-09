@@ -49,5 +49,15 @@ public class WordRiverController {
     ctx.json(ctxCollection.find(new Document()).into(new ArrayList<>()));
   }
 
+ public void addNewContextPack(Context ctx) {
+   ContextPack newContextPack = ctx.bodyValidator(ContextPack.class)
+    .check(cp -> cp.name !=null && cp.name.length() > 0)
+    .check(cp -> cp.icon !=null)
+    .check(cp -> cp.enabled == true || cp.enabled == false)
+    .check(cp -> cp.wordlist != null )
+    .get();
 
-}
+    ctxCollection.insertOne(newContextPack);
+    ctx.status(201);
+    ctx.json(ImmutableMap.of("id", newContextPack._id));
+ }
