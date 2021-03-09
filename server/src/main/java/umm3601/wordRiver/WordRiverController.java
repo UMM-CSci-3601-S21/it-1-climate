@@ -46,7 +46,6 @@ public class WordRiverController {
    ContextPack newContextPack = ctx.bodyValidator(ContextPack.class)
     .check(cp -> cp.name !=null && cp.name.length() > 0)
     .check(cp -> cp.icon !=null)
-    .check(cp -> cp.enabled == true || cp.enabled == false)
     .check(cp -> cp.wordlist != null )
     .get();
 

@@ -237,7 +237,7 @@ public void AddInvalidEnabled() throws IOException {
       + "\"schema\": \"Test schema\","
       + "\"name\": \"Test Context Pack\","
       + "\"icon\": \"image.png\","
-      + "\"enabled\": ,"
+      + "\"enabled\": \"notaboolean\" ,"
       + "\"wordlist\": []"
       + "}";
 
@@ -251,26 +251,6 @@ public void AddInvalidEnabled() throws IOException {
     });
 }
 
-@Test
-public void AddInvalidWordList() throws IOException {
-
-  String testNewContextPack = "{"
-      + "\"schema\": \"Test schema\","
-      + "\"name\": \"Test Context Pack\","
-      + "\"icon\": \"image.png\","
-      + "\"enabled\": true,"
-      + "\"wordlist\": "
-      + "}";
-
-  mockReq.setBodyContent(testNewContextPack);
-  mockReq.setMethod("POST");
-
-  Context ctx = ContextUtil.init(mockReq,mockRes,"api/packs");
-
-  assertThrows(BadRequestResponse.class,() -> {
-    wordRiverController.addNewContextPack(ctx);
-   });
-}
 
 @Test public void AddNullWordList() throws IOException {
 
@@ -279,6 +259,7 @@ public void AddInvalidWordList() throws IOException {
       + "\"name\": \"Test Context Pack\","
       + "\"icon\": \"image.png\","
       + "\"enabled\": true,"
+      + "\"wordlist\": null"
       + "}";
 
   mockReq.setBodyContent(testNewContextPack);
