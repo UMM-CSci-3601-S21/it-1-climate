@@ -76,27 +76,25 @@ public void setupEach() throws IOException {
   List<Document> testPacks = new ArrayList<>();
   testPacks.add(
     new Document()
-      //.append("$schema", "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json")
       .append("name", "iron man")
       .append("icon", "iron.png")
       .append("enabled", "true")
       .append("wordlist", Arrays.asList(new Document().append("name", "iron man").append("enabled", true)
-      .append("nouns", Arrays.asList(new Document("word", "suit").append("forms", Arrays.asList("suits"))))
-      .append("verbs", Arrays.asList(new Document("word", "fight").append("forms", Arrays.asList("fights"))))
-      .append("adjectives", Arrays.asList(new Document("word", "big").append("forms", Arrays.asList("biggish"))))
+      .append("nouns", Arrays.asList(new Document("word", "suit").append("forms", Arrays.asList( "suit", "suits"))))
+      .append("verbs", Arrays.asList(new Document("word", "fight").append("forms", Arrays.asList("fight", "fights"))))
+      .append("adjectives", Arrays.asList(new Document("word", "big").append("forms", Arrays.asList("big", "biggish"))))
       .append("misc", Arrays.asList(new Document("word", "the").append("forms", Arrays.asList("the")))) )
       ));
 
     testPacks.add(
       new Document()
-      //.append("$schema", "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json")
       .append("name", "captain america")
       .append("icon", "cap.png")
       .append("enabled", "false")
       .append("wordlist", Arrays.asList(new Document().append("name", "iron man").append("enabled", true)
-      .append("nouns", Arrays.asList(new Document("word", "suit").append("forms", Arrays.asList("suits"))))
-      .append("verbs", Arrays.asList(new Document("word", "fight").append("forms", Arrays.asList("fights"))))
-      .append("adjectives", Arrays.asList(new Document("word", "big").append("forms", Arrays.asList("biggish"))))
+      .append("nouns", Arrays.asList(new Document("word", "suit").append("forms", Arrays.asList("suit", "suits"))))
+      .append("verbs", Arrays.asList(new Document("word", "fight").append("forms", Arrays.asList("fight", "fights"))))
+      .append("adjectives", Arrays.asList(new Document("word", "big").append("forms", Arrays.asList( "big","biggish"))))
       .append("misc", Arrays.asList(new Document("word", "the").append("forms", Arrays.asList("the")))) )
       ));
 
@@ -104,7 +102,6 @@ public void setupEach() throws IOException {
   Document batman =
     new Document()
       .append("_id", batmanId)
-      //.append("$schema", "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json")
       .append("name","batman")
       .append("icon", "batman.png")
       .append("enabled", "true")
