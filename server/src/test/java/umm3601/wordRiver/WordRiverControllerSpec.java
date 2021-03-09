@@ -173,9 +173,131 @@ public void AddContextPack() throws IOException {
 }
 
 @Test
+public void AddInvalidName() throws IOException {
+
+  String testNewContextPack = "{"
+      + "\"schema\": \"Test schema\","
+      + "\"name\": \"\","
+      + "\"icon\": \"image.png\","
+      + "\"enabled\": true,"
+      + "\"wordlist\": []"
+      + "}";
+
+ mockReq.setBodyContent(testNewContextPack);
+ mockReq.setMethod("POST");
+ Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs");
+
+ assertThrows(BadRequestResponse.class, () -> {
+   wordRiverController.addNewContextPack(ctx);
+ });
+}
+
+@Test
+public void AddNullName() throws IOException {
+
+  String testNewContextPack = "{"
+  + "\"schema\": \"Test schema\","
+  + "\"icon\": \"image.png\","
+  + "\"enabled\": true,"
+  + "\"wordlist\": []"
+  + "}";
+
+ mockReq.setBodyContent(testNewContextPack);
+ mockReq.setMethod("POST");
+ Context ctx = ContextUtil.init(mockReq,mockRes,"api/packs");
+
+ assertThrows(BadRequestResponse.class, () -> {
+    wordRiverController.addNewContextPack(ctx);
+  });
+}
+
+@Test
+public void AddNullIcon() throws IOException {
+
+  String testNewContextPack = "{"
+  + "\"schema\": \"Test schema\","
+  + "\"name\": \"Test Context Pack\","
+  + "\"enabled\": true,"
+  + "\"wordlist\": []"
+  + "}";
+
+  mockReq.setBodyContent(testNewContextPack);
+  mockReq.setMethod("POST");
+
+  Context ctx = ContextUtil.init(mockReq,mockRes,"api/packs");
+
+  assertThrows(BadRequestResponse.class,() -> {
+  wordRiverController.addNewContextPack(ctx);
+ });
+}
+
+@Test
+public void AddInvalidEnabled() throws IOException {
+
+  String testNewContextPack = "{"
+      + "\"schema\": \"Test schema\","
+      + "\"name\": \"Test Context Pack\","
+      + "\"icon\": \"image.png\","
+      + "\"enabled\": ,"
+      + "\"wordlist\": []"
+      + "}";
+
+  mockReq.setBodyContent(testNewContextPack);
+  mockReq.setMethod("POST");
+
+  Context ctx = ContextUtil.init(mockReq,mockRes,"api/packs");
+
+  assertThrows(BadRequestResponse.class,() -> {
+    wordRiverController.addNewContextPack(ctx);
+    });
+}
+
+@Test
+public void AddInvalidWordList() throws IOException {
+
+  String testNewContextPack = "{"
+      + "\"schema\": \"Test schema\","
+      + "\"name\": \"Test Context Pack\","
+      + "\"icon\": \"image.png\","
+      + "\"enabled\": true,"
+      + "\"wordlist\": "
+      + "}";
+
+  mockReq.setBodyContent(testNewContextPack);
+  mockReq.setMethod("POST");
+
+  Context ctx = ContextUtil.init(mockReq,mockRes,"api/packs");
+
+  assertThrows(BadRequestResponse.class,() -> {
+    wordRiverController.addNewContextPack(ctx);
+   });
+}
+
+@Test public void AddNullWordList() throws IOException {
+
+  String testNewContextPack = "{"
+      + "\"schema\": \"Test schema\","
+      + "\"name\": \"Test Context Pack\","
+      + "\"icon\": \"image.png\","
+      + "\"enabled\": true,"
+      + "}";
+
+  mockReq.setBodyContent(testNewContextPack);
+  mockReq.setMethod("POST");
+
+  Context ctx = ContextUtil.init(mockReq,mockRes,"api/packs");
+
+  assertThrows(BadRequestResponse.class,() -> {
+    wordRiverController.addNewContextPack(ctx);
+   });
+}
+
+@Test
 public void secureSchema() {
   ContextPack schema = new ContextPack();
   assertEquals("https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-  schema.$schema);
+  schema.schema);
+  }
+
   }
 }
