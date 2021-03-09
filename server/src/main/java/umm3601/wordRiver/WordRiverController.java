@@ -61,3 +61,22 @@ public class WordRiverController {
     ctx.status(201);
     ctx.json(ImmutableMap.of("id", newContextPack._id));
  }
+
+ public void getPack(Context ctx) {
+
+  String id = ctx.pathParam("id");
+  ContextPack contextPack;
+
+  try {
+    contextPack = ctxCollection.find(eq("_id", new ObjectId(id))).first();
+  } catch(IllegalArgumentException e) {
+    throw new BadRequestResponse("The requested context pack id wasn't a legal Mongo Object ID.");
+  }
+  if (contextPack == null) {
+    throw new NotFoundResponse("The requested context pack was not found");
+  } else {
+    ctx.json(contextPack);
+  }
+}
+
+}
