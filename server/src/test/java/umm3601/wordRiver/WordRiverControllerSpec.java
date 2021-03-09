@@ -139,6 +139,41 @@ public void GetAllPacks() throws IOException {
   assertEquals(db.getCollection("packs").countDocuments(), JavalinJson.fromJson(result, ContextPack[].class).length);
 }
 
+@Test
+public void AddContextPack() throws IOException {
+
+  String testNewContextPack = "{"
+      + "\"schema\": \"Test schema\","
+      + "\"name\": \"Test Context Pack\","
+      + "\"icon\": \"image.png\","
+      + "\"enabled\": true,"
+      + "\"wordlist\": []"
+      + "}";
+
+
+  mockReq.setBodyContent(testNewContextPack);
+  mockReq.setMethod("POST");
+
+  Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs");
+  wordRiverController.addNewContextPack(ctx);
+
+  assertEquals(201, mockRes.getStatus());
+
+  String result = ctx.resultString();
+  String id = jsonMapper.readValue(result, ObjectNode.class).get("id").asText();
+  assertNotEquals("", id);
+  System.out.println(id);
+
+  assertEquals(1,db.getCollection("packs").countDocuments(eq("_id", new ObjectId(id))));
+
+  //Verify the context pack was added to the database with the correct ID
+  Document addedContextPack = db.getCollection("packs").find(eq("_id", new ObjectId(id))).first();
+  assertNotNull(addedContextPack);
+  assertEquals("Test Context Pack", addedContextPack.getString("name"));
+  assertEquals("image.png", addedContextPack.getString("icon"));
+  assertEquals(true, addedContextPack.getBoolean("enabled"));
+  assertNotNull(addedContextPack.get("wordlist"));
+}
 
 @Test
 public void secureSchema() {
