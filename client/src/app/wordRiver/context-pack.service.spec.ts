@@ -65,4 +65,17 @@ describe('ContextPackService', () => {
       pack => expect(pack).toBe(targetPack)
     );
   });
+
+  it('addPack() posts to api/packs', () => {
+    service.addPack(testCPs[2]).subscribe(
+      id => expect(id).toBe('test')
+    );
+
+    const req = httpTestingController.expectOne(service.contextPackUrl);
+
+    expect(req.request.method).toEqual('POST');
+    expect(req.request.body).toEqual(testCPs[2]);
+
+    req.flush({id: 'test'});
+  });
 });
