@@ -34,6 +34,7 @@ import { UserProfileComponent } from './users/user-profile.component';
 import { AddUserComponent } from './users/add-user.component';
 import { CpListComponent } from './wordRiver/contextPacks/cp-list.component';
 import { ContextPackService } from './wordRiver/context-pack.service';
+import { CpCardComponent } from './wordRiver/contextPacks/cp-card.component';
 
 const MATERIAL_MODULES: any[] = [
   MatListModule,
@@ -63,6 +64,7 @@ const MATERIAL_MODULES: any[] = [
     UserProfileComponent,
     AddUserComponent,
     CpListComponent,
+    CpCardComponent,
   ],
   imports: [
     BrowserModule,
