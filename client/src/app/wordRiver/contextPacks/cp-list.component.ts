@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ContextPack } from '../context-pack';
 import { WordList } from '../word-list';
-import { Word } from '../word';
 import { ContextPackService } from '../context-pack.service';
 import { Subscription } from 'rxjs';
 
