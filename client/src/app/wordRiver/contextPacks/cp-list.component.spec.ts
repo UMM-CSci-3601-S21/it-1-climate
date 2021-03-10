@@ -21,8 +21,6 @@ import { CpCardComponent } from './cp-card.component';
 import { MockCPService } from 'src/testing/context-pack.service.mock';
 import { ContextPackService } from '../context-pack.service';
 import { ContextPack } from '../context-pack';
-import { WordList } from '../word-list';
-import { Word } from '../word';
 
 const COMMON_IMPORTS: any[] = [
   FormsModule,
@@ -66,7 +64,51 @@ describe('CpListComponent', () => {
     expect(cpList.contextPacks.length).toBe(3);
   });
 
+  it('contains a pack named "canines"', () => {
+    expect(cpList.contextPacks.some((pack: ContextPack) => pack.name === 'canines')).toBe(true);
+  });
+
+  it('contains two packs that are enabled', () => {
+    expect(cpList.contextPacks.filter((pack: ContextPack) => pack.enabled === true).length).toBe(2);
+  });
+
   it('should create', () => {
     expect(cpList).toBeTruthy();
   });
 });
+
+describe('Misbehaving Context Pack List', () => {
+  let cpList: CpListComponent;
+  let fixture: ComponentFixture<CpListComponent>;
+  let cpServiceStub: {
+     getPacks: () =>  Observable<ContextPack[]>;
+  };
+
+  beforeEach(() =>  {
+    // Stub Context-Pack service for test purposes
+    cpServiceStub = {
+      getPacks: () => new Observable(observer => {
+         observer.error('Error-prone observable');
+      })
+    };
+
+    TestBed.configureTestingModule({
+      imports: [COMMON_IMPORTS],
+      declarations:  [CpListComponent],
+      providers: [{provide: ContextPackService, useValue: cpServiceStub}]
+    });
+  });
+
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(CpListComponent);
+      cpList = fixture.componentInstance;
+      fixture.detectChanges();
+    });
+  }));
+
+  it('generates an error if we don\'t set up a ContextPackService', () => {
+    expect(cpList.contextPacks).toBeUndefined();
+  });
+});
+
