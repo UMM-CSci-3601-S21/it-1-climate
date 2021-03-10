@@ -62,7 +62,7 @@ export class AddCpComponent implements OnInit {
 
   submitForm() {
     this.cpService.addPack(this.addContextPackForm.value).subscribe(newID => {
-      this.snackBar.open('Added the context pack ' + this.addContextPackForm.value.name + ' successfully', null, {
+      this.snackBar.open('Added the ' + this.addContextPackForm.value.name + ' context pack successfully', null, {
         duration: 2000,
       });
       this.router.navigate(['/packs/', newID]);

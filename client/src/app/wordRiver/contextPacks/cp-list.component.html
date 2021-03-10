@@ -1,1 +1,7 @@
-<p>cp-list works!</p>
+<button mat-fab class="add-cp" matTooltip="Add Context Pack" matTooltipPosition="left" routerLink="/packs/new" data-test="addCpButton">
+    <mat-icon class="logo" aria-label="Add Context Pack">add</mat-icon>
+</button>
+
+<a mat-list-item *ngFor="let pack of this.contextPacks">
+    <p> {{pack.name}}</p>
+</a>
