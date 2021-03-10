@@ -12,6 +12,7 @@ import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
 
 import umm3601.user.UserController;
+import umm3601.wordRiver.WordRiverController;
 
 public class Server {
 
@@ -36,6 +37,7 @@ public class Server {
 
     // Initialize dependencies
     UserController userController = new UserController(database);
+    WordRiverController wordRiverController = new WordRiverController(database);
 
     Javalin server = Javalin.create(config -> {
       config.registerPlugin(new RouteOverviewPlugin("/api"));
@@ -59,7 +61,8 @@ public class Server {
 
     // List users, filtered using query parameters
     server.get("/api/users", userController::getUsers);
-
+   // List users, filtered using query parameters
+    server.get("/api/packs", wordRiverController::getPacks);
     // Get the specified user
     server.get("/api/users/:id", userController::getUser);
 
@@ -69,6 +72,10 @@ public class Server {
     // Add new user with the user info being in the JSON body
     // of the HTTP request
     server.post("/api/users", userController::addNewUser);
+
+    server.post("/api/packs", wordRiverController::addNewContextPack);
+    // Get the specified context pack
+    server.get("/api/packs/:id", wordRiverController::addNewContextPack);
 
     server.exception(Exception.class, (e, ctx) -> {
       ctx.status(500);
