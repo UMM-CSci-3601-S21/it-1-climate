@@ -1,11 +1,12 @@
 package umm3601.wordRiver;
 
+import java.util.ArrayList;
 public class WordList {
 
   public String name;
   public boolean enabled;
-  public Word[] nouns;
-  public Word[] verbs;
-  public Word[] adjectives;
-  public Word[] misc;
+  public ArrayList<Word> nouns;
+  public ArrayList<Word> verbs;
+  public ArrayList<Word> adjectives;
+  public ArrayList<Word> misc;
 }
