@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { ContextPack } from './context-pack';
-import { WordList } from './word-list';
-import { Word } from './word';
+
 
 @Injectable({
   providedIn: 'root'
