@@ -18,12 +18,15 @@ export class CpInfoComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private contextPackService: ContextPackService) { }
 
   ngOnInit(): void {
+    // We subscribe to the parameter map here so we'll be notified whenever
+    // that changes (i.e., when the URL changes) so this component will update
+    // to display the newly requested user.
     this.route.paramMap.subscribe((pmap) => {
       this.id = pmap.get('id');
-      if(this.getCpSub) {
+      if (this.getCpSub) {
         this.getCpSub.unsubscribe();
       }
-      this.getCpSub = this.contextPackService.getPackById(this.id).subscribe(cp => this.contextPack = cp);
+      this.getCpSub = this.contextPackService.getPack(this.id).subscribe(contextPack => this.contextPack = contextPack);
     });
   }
 

@@ -41,7 +41,7 @@ export class MockCPService extends ContextPackService {
         return of(MockCPService.testCPs);
     }
 
-    getPackByID(id: string): Observable<ContextPack> {
+    getPack(id: string): Observable<ContextPack> {
         if (id === MockCPService.testCPs[0]._id) {
             return of(MockCPService.testCPs[0]);
         } else if (id === MockCPService.testCPs[1]._id) {
