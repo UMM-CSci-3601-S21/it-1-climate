@@ -6,6 +6,7 @@ import { UserProfileComponent } from './users/user-profile.component';
 import { AddUserComponent } from './users/add-user.component';
 import { CpListComponent } from './wordRiver/contextPacks/cp-list.component';
 import { AddCpComponent } from './wordRiver/contextPacks/add-cp.component';
+import { CpInfoComponent } from './wordRiver/contextPacks/cp-info.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path: 'users', component: UserListComponent},
   {path: 'packs', component: CpListComponent},
   {path: 'packs/new', component: AddCpComponent},
-  {path: 'packs/:id', component: CpListComponent},
+  {path: 'packs/:id', component: CpInfoComponent},
   {path: 'users/new', component: AddUserComponent},
   {path: 'users/:id', component: UserProfileComponent}
 ];

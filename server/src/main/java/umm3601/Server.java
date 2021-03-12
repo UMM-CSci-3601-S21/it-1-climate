@@ -63,6 +63,7 @@ public class Server {
     server.get("/api/users", userController::getUsers);
    // List users, filtered using query parameters
     server.get("/api/packs", wordRiverController::getPacks);
+    server.get("/api/packs/:id", wordRiverController::getPack);
     // Get the specified user
     server.get("/api/users/:id", userController::getUser);
 

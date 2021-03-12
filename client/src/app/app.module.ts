@@ -36,6 +36,7 @@ import { CpListComponent } from './wordRiver/contextPacks/cp-list.component';
 import { ContextPackService } from './wordRiver/context-pack.service';
 import { CpCardComponent } from './wordRiver/contextPacks/cp-card.component';
 import { AddCpComponent } from './wordRiver/contextPacks/add-cp.component';
+import { CpInfoComponent } from './wordRiver/contextPacks/cp-info.component';
 
 const MATERIAL_MODULES: any[] = [
   MatListModule,
@@ -67,6 +68,7 @@ const MATERIAL_MODULES: any[] = [
     CpListComponent,
     CpCardComponent,
     AddCpComponent,
+    CpInfoComponent,
   ],
   imports: [
     BrowserModule,
