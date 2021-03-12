@@ -61,9 +61,11 @@ public class Server {
 
     // List users, filtered using query parameters
     server.get("/api/users", userController::getUsers);
-   // List users, filtered using query parameters
+
+
     server.get("/api/packs", wordRiverController::getPacks);
     server.get("/api/packs/:id", wordRiverController::getPack);
+
     // Get the specified user
     server.get("/api/users/:id", userController::getUser);
 
@@ -75,8 +77,6 @@ public class Server {
     server.post("/api/users", userController::addNewUser);
 
     server.post("/api/packs", wordRiverController::addNewContextPack);
-    // Get the specified context pack
-    server.get("/api/packs/:id", wordRiverController::addNewContextPack);
 
     server.exception(Exception.class, (e, ctx) -> {
       ctx.status(500);
