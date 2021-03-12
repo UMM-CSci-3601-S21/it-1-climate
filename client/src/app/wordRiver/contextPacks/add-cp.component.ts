@@ -25,7 +25,7 @@ export class AddCpComponent implements OnInit {
 
     icon: [
       {type: 'required', message: 'An icon is required'},
-      {type: 'fileType', message: 'The file must be a valid type (.png or .jpg)'}
+      {type: 'pattern', message: 'The file must be a valid type (.png or .jpg)'}
     ],
 
     enabled: [
