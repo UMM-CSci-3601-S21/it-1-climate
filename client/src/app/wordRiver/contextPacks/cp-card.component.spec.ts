@@ -28,7 +28,7 @@ describe('CpCardComponent', () => {
       _id: 'woof',
       schema: 'https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json',
       name: 'canines',
-      icon: '',
+      icon: 'image.png',
       enabled: true,
       wordlist: testList
     };
