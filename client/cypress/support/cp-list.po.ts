@@ -1,4 +1,4 @@
-import {ContextPack} from 'src/app/wordRiver/context-pack';
+
 
 export class CpListPage {
 
