@@ -7,5 +7,5 @@ export interface ContextPack {
   name: string;
   icon: string;
   enabled: boolean;
-  wordlist: WordList[];
+  wordlist: Array<WordList>;
 }

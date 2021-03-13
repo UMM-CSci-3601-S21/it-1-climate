@@ -20,7 +20,7 @@ export class ContextPackService {
     });
   }
 
-  getPackById(id: string): Observable<ContextPack> {
+  getPack(id: string): Observable<ContextPack> {
     return this.httpClient.get<ContextPack>(this.contextPackUrl + '/' + id);
   }
 

@@ -61,7 +61,7 @@ describe('ContextPackService', () => {
     const targetPack: ContextPack= testCPs[1];
     const targetId: string = targetPack._id;
 
-    service.getPackById(targetId).subscribe(
+    service.getPack(targetId).subscribe(
       pack => expect(pack).toBe(targetPack)
     );
   });

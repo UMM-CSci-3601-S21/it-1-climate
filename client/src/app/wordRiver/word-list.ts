@@ -1,10 +1,11 @@
 import { Word } from './word';
 
+
 export interface WordList {
   name: string;
   enabled: boolean;
-  nouns: Word[];
-  verbs: Word[];
-  adjectives: Word[];
-  misc: Word[];
+  nouns: Array<Word>;
+  verbs: Array<Word>;
+  adjectives: Array<Word>;
+  misc: Array<Word>;
 }

@@ -230,26 +230,6 @@ public void AddNullIcon() throws IOException {
  });
 }
 
-@Test public void AddNullWordList() throws IOException {
-
-  String testNewContextPack = "{"
-      + "\"schema\": \"Test schema\","
-      + "\"name\": \"Test Context Pack\","
-      + "\"icon\": \"image.png\","
-      + "\"enabled\": true,"
-      + "\"wordlist\": null"
-      + "}";
-
-  mockReq.setBodyContent(testNewContextPack);
-  mockReq.setMethod("POST");
-
-  Context ctx = ContextUtil.init(mockReq,mockRes,"api/packs");
-
-  assertThrows(BadRequestResponse.class,() -> {
-    wordRiverController.addNewContextPack(ctx);
-   });
-}
-
 @Test
 public void secureSchema() {
   ContextPack schema = new ContextPack();
