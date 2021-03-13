@@ -12,8 +12,8 @@ describe('Cp List', () => {
         page.navigateTo();
     });
 
-    it('Should have 23 context packs', () => {
-        page.getCpCards().should('have.length', 23);
+    it('Should have 13 context packs', () => {
+        page.getCpCards().should('have.length', 13);
     });
 
     it('Should click "View Context Pack" on a context pack and lead to a valid URL', () => {
@@ -28,5 +28,11 @@ describe('Cp List', () => {
             cy.get('.cp-card-name').first().should('have.text', cpName);
             cy.get('.cp-card-enabled').first().should('have.value', cpEnabled);
         });
+    });
+
+    it('Should click add context pack and go to the right URL',() => {
+        page.addCpButton().click();
+        cy.url().should(url => expect(url.endsWith('/packs/new')).to.be.true);
+        cy.get('.add-cp-title').should('have.text', 'New Context Pack');
     });
 });
