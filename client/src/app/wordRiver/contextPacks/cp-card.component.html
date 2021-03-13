@@ -1,6 +1,10 @@
 <mat-card class="cp-card" *ngIf="this.contextPack">
   <mat-card-header>
-    <mat-card-title class="cp-card-name">{{this.contextPack.name}}</mat-card-title>
+    <mat-card-title class="cp-card-name">
+      <igx-avatar id ="icon" src={{this.contextPack.icon}}>
+      </igx-avatar>
+      <h5 id="name">{{this.contextPack.name}}</h5>
+    </mat-card-title>
   </mat-card-header>
   <mat-card-content *ngIf="!this.simple">
     <p>Enabled: <span class="cp-card-enabled">{{ this.contextPack.enabled }}</span></p>
