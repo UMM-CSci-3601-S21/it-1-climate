@@ -25,6 +25,7 @@ describe('Cp List', () => {
 
             cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}/);
 
+            cy.get('#icon').first().should('be.visible');
             cy.get('.cp-card-name').first().should('have.text', cpName);
             cy.get('.cp-card-enabled').first().should('have.value', cpEnabled);
         });

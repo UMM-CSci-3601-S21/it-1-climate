@@ -72,6 +72,11 @@ describe('CpListComponent', () => {
     expect(cpList.contextPacks.filter((pack: ContextPack) => pack.enabled === true).length).toBe(2);
   });
 
+  it('Contains a pack whose icon is "https://can-do-canines.org/wp-content/uploads/2018/01/admin-ajax.jpg"', () => {
+    expect(cpList.contextPacks.some((pack: ContextPack) =>
+    pack.icon === 'https://can-do-canines.org/wp-content/uploads/2018/01/admin-ajax.jpg')).toBe(true);
+  });
+
   it('should create', () => {
     expect(cpList).toBeTruthy();
   });

@@ -20,7 +20,7 @@ export class MockCPService extends ContextPackService {
             _id: 'woof',
             schema: 'https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json',
             name: 'canines',
-            icon: 'image.png',
+            icon: 'https://can-do-canines.org/wp-content/uploads/2018/01/admin-ajax.jpg',
             enabled: true,
             wordlist: MockCPService.testList
         },
