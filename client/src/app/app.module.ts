@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { IgxAvatarModule } from 'igniteui-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,9 +21,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { UserListComponent } from './users/user-list.component';
 import { HomeComponent } from './home/home.component';
@@ -39,52 +40,54 @@ import { AddCpComponent } from './wordRiver/contextPacks/add-cp.component';
 import { CpInfoComponent } from './wordRiver/contextPacks/cp-info.component';
 
 const MATERIAL_MODULES: any[] = [
-  MatListModule,
-  MatButtonModule,
-  MatIconModule,
-  MatToolbarModule,
-  MatCardModule,
-  MatMenuModule,
-  MatSidenavModule,
-  MatInputModule,
-  MatExpansionModule,
-  MatTooltipModule,
-  MatSelectModule,
-  MatOptionModule,
-  MatFormFieldModule,
-  MatDividerModule,
-  MatRadioModule,
-  MatSnackBarModule
+	MatListModule,
+	MatButtonModule,
+	MatIconModule,
+	MatToolbarModule,
+	MatCardModule,
+	MatMenuModule,
+	MatSidenavModule,
+	MatInputModule,
+	MatExpansionModule,
+	MatTooltipModule,
+	MatSelectModule,
+	MatOptionModule,
+	MatFormFieldModule,
+	MatDividerModule,
+	MatRadioModule,
+	MatSnackBarModule
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    UserListComponent,
-    UserCardComponent,
-    UserProfileComponent,
-    AddUserComponent,
-    CpListComponent,
-    CpCardComponent,
-    AddCpComponent,
-    CpInfoComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
-    HttpClientModule,
-    MATERIAL_MODULES,
-    LayoutModule,
-  ],
-  providers: [
-    UserService,
-    ContextPackService
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		UserListComponent,
+		UserCardComponent,
+		UserProfileComponent,
+		AddUserComponent,
+		CpListComponent,
+		CpCardComponent,
+		AddCpComponent,
+		CpInfoComponent,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		FormsModule,
+		ReactiveFormsModule,
+		FlexLayoutModule,
+		HttpClientModule,
+		MATERIAL_MODULES,
+		LayoutModule,
+    IgxAvatarModule
+	],
+	providers: [
+		UserService,
+		ContextPackService
+	],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
