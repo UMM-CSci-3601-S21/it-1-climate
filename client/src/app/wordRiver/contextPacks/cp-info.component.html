@@ -7,7 +7,7 @@
 <div fxLayout="row">
   <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
       <div fxLayout="row wrap" fxLayoutGap="10px" class="word-list-container">
-        <app-wl-card simple="true" *ngFor="let wl of this.contextPack.wordlist" class="wl-card" [wordList]="wl" fxFlex="1 1 280px"></app-wl-card>
+        <app-wl-card simple="true" *ngFor="let wl of wordList" class="wl-card" [wordList]="wl" fxFlex="1 1 280px"></app-wl-card>
       </div>
    </div>
  </div>

@@ -92,7 +92,7 @@ export class MockCPService extends ContextPackService {
             _id: 'meow',
             schema: 'https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json',
             name: 'felines',
-            icon: 'image.png',
+            icon: 'https://can-do-canines.org/wp-content/uploads/2018/01/admin-ajax.jpg',
             enabled: false,
             wordlist: MockCPService.testList,
         },
@@ -108,7 +108,7 @@ export class MockCPService extends ContextPackService {
             _id: 'moo',
             schema: 'https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json',
             name: 'bovines',
-            icon: 'image.png',
+            icon: 'https://can-do-canines.org/wp-content/uploads/2018/01/admin-ajax.jpg',
             enabled: true,
             wordlist: MockCPService.testList,
         }
