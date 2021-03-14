@@ -13,7 +13,7 @@ import { WordList } from '../word-list';
 export class CpInfoComponent implements OnInit, OnDestroy {
 
   contextPack: ContextPack;
-  wordList: WordList[];
+  wordList: Array<WordList>;
   id: string;
   getCpSub: Subscription;
 
@@ -32,7 +32,9 @@ export class CpInfoComponent implements OnInit, OnDestroy {
       // eslint-disable-next-line curly
       if(this.id)this.getCpSub = this.contextPackService.getPack(this.id).subscribe(contextPack => {
         this.contextPack = contextPack;
-        this.wordList = this.contextPack.wordlist;
+        if(this.contextPack != null){
+        this.wordList = contextPack.wordlist;
+        }
       });
     });
   }
