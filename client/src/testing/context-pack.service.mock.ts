@@ -6,7 +6,87 @@ import { WordList } from '../app/wordRiver/word-list';
 
 @Injectable()
 export class MockCPService extends ContextPackService {
-    static testList: Array<WordList> = [];
+    static testList: Array<WordList> = [{
+      name: 'Langley',
+      enabled: true,
+      nouns: [
+        {
+          word: 'Joker',
+          forms: [
+            'Joker'
+          ]
+        },
+        {
+          word: 'villain',
+          forms: [
+            'villain, villains'
+          ]
+        }
+      ],
+      verbs: [
+        {
+          word: 'fly',
+          forms: [
+            'fly',
+            'flown',
+            'flew'
+          ]
+        },
+        {
+          word: 'dance',
+          forms: [
+            'dance',
+            'danced'
+          ]
+        },
+        {
+          word: 'steal',
+          forms: [
+            'steal',
+            'stole'
+          ]
+        },
+        {
+          word: 'laugh',
+          forms: [
+            'laugh',
+            'laughed',
+            'laughing'
+          ]
+        },
+        {
+          word: 'hide',
+          forms: [
+            'hide',
+            'hid',
+            'hiding'
+          ]
+        }
+      ],
+      adjectives: [
+        {
+          word: 'evil',
+          forms: [
+            'evil'
+          ]
+        },
+        {
+          word: 'sad',
+          forms: [
+            'sad'
+          ]
+        }
+      ],
+      misc: [
+        {
+          word: 'the',
+          forms: [
+            'the'
+          ]
+        }
+      ]
+    }
+    ];
     static testCPs: ContextPack[] = [
         {
             _id: 'meow',
@@ -14,7 +94,7 @@ export class MockCPService extends ContextPackService {
             name: 'felines',
             icon: 'image.png',
             enabled: false,
-            wordlist: MockCPService.testList
+            wordlist: MockCPService.testList,
         },
         {
             _id: 'woof',
@@ -22,7 +102,7 @@ export class MockCPService extends ContextPackService {
             name: 'canines',
             icon: 'https://can-do-canines.org/wp-content/uploads/2018/01/admin-ajax.jpg',
             enabled: true,
-            wordlist: MockCPService.testList
+            wordlist: MockCPService.testList,
         },
         {
             _id: 'moo',
@@ -30,7 +110,7 @@ export class MockCPService extends ContextPackService {
             name: 'bovines',
             icon: 'image.png',
             enabled: true,
-            wordlist: MockCPService.testList
+            wordlist: MockCPService.testList,
         }
     ];
     constructor() {

@@ -8,7 +8,6 @@ import { ContextPack } from '../context-pack';
 import { CpCardComponent } from './cp-card.component';
 import { CpInfoComponent } from './cp-info.component';
 import { ContextPackService } from '../context-pack.service';
-import { SystemJsNgModuleLoader } from '@angular/core';
 
 describe('CpInfoComponent', () => {
   let cpInfoComponent: CpInfoComponent;
@@ -40,7 +39,7 @@ describe('CpInfoComponent', () => {
     expect(cpInfoComponent).toBeTruthy();
   });
 
-  it('should return the proper ID when given a context pack', () => {
+  it('should return the proper ID for index 2 when given a context pack', () => {
     const expectedPack: ContextPack = MockCPService.testCPs[2];
 
     activatedRoute.setParamMap({ id: expectedPack._id });
@@ -56,7 +55,7 @@ describe('CpInfoComponent', () => {
     expect(cpInfoComponent.contextPack).toBeNull();
   });
 
-  it('should return the proper ID when given a context pack', () => {
+  it('should return the proper ID for index 1 when given a context pack', () => {
     const expectedPack: ContextPack = MockCPService.testCPs[1];
 
     activatedRoute.setParamMap({ id: expectedPack._id });
@@ -65,7 +64,7 @@ describe('CpInfoComponent', () => {
     expect(cpInfoComponent.contextPack).toEqual(expectedPack);
   });
 
-  it('should return the proper ID when given a context pack', () => {
+  it('should return the proper ID for index 0 when given a context pack', () => {
     const expectedPack: ContextPack = MockCPService.testCPs[0];
 
     activatedRoute.setParamMap({ id: expectedPack._id });
