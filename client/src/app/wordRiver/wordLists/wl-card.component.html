@@ -1,13 +1,27 @@
 <mat-card class="wl-card" *ngIf="this.wordList">
   <mat-card-header>
+    <div fxFlex>
     <mat-card-title class="wl-card-name">
      {{this.wordList.name}}
     </mat-card-title>
+    <mat-card-content id="language">Nouns:</mat-card-content>
+     <mat-card-content class="words-and-forms" *ngFor="let nounWord of wordList.nouns"><ul id="type">Word:</ul> {{nounWord.word}} <ul>Forms:</ul> <ol>{{nounWord.forms}}</ol>
+     </mat-card-content>
+
+     <mat-card-content id="language">Adjectives:</mat-card-content>
+     <mat-card-content class="words-and-forms" *ngFor="let adjWord of wordList.adjectives"><ul id="type">Word:</ul> {{adjWord.word}} <ul>Forms:</ul> <ol>{{adjWord.forms}}</ol>
+     </mat-card-content>
+
+     <mat-card-content id="language">Verbs:</mat-card-content>
+     <mat-card-content class="words-and-forms" *ngFor="let verbWord of wordList.verbs"><ul id="type">Word:</ul> {{verbWord.word}} <ul>Forms:</ul> <ol>{{verbWord.forms}}</ol>
+     </mat-card-content>
+
+     <mat-card-content id="language">Misc:</mat-card-content>
+     <mat-card-content class="words-and-forms" *ngFor="let miscWord of wordList.misc"><ul id="type">Word:</ul> {{miscWord.word}} <ul>Forms:</ul> <ol>{{miscWord.forms}}</ol>
+     </mat-card-content>
+    </div>
   </mat-card-header>
-  <mat-card-content *ngIf="!this.simple">
     <p>Enabled: <span class="wl-card-enabled">{{ this.wordList.enabled }}</span></p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button data-test="viewWordListButton" *ngIf="this.simple" [routerLink]="['/:id',this.wordList.name]">View Word List</button>
-  </mat-card-actions>
 </mat-card>
+
+

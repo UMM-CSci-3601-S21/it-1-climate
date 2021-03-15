@@ -2,8 +2,23 @@
     white-space: nowrap;
 }
 
+.wl-card-name {
+    padding-bottom: 15px;
+}
+
 .mat-card-title {
     display: inline-block;
     font-size: 22px;
     padding-left: 10px;
+}
+
+#language {
+    padding-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.words-and-forms > ul {
+    font-weight: bolder;
 }
