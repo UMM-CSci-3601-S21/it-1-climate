@@ -172,6 +172,32 @@ public void AddContextPack() throws IOException {
 }
 
 @Test
+public void AddNewWordList() throws IOException {
+  String testNewWordList = "{"
+    + "\"name\": \"Test Wordlist\","
+    + "\"enabled\": true,"
+    + "\"nouns\": [],"
+    + "\"verbs\": [],"
+    + "\"adjectives\": [],"
+    + "\"misc\": [],"
+    + "}";
+
+    ContextPack contextPack = testPacks[2];
+
+    mockReq.setBodyContent(testNewWordList);
+    mockReq.setMethod("POST");
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id");
+    wordRiverController.addNewWordList(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+
+    //Verify the word list was added to the context pack
+    assertEquals(testPacks[2].wordlist.contains(testNewWordList));
+
+}
+
+@Test
 public void AddInvalidName() throws IOException {
 
   String testNewContextPack = "{"

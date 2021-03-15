@@ -65,6 +65,7 @@ public class Server {
 
     server.get("/api/packs", wordRiverController::getPacks);
     server.get("/api/packs/:id", wordRiverController::getPack);
+    server.get("/api/packs/:id", wordRiverController::addNewWordList);
 
     // Get the specified user
     server.get("/api/users/:id", userController::getUser);

@@ -19,6 +19,7 @@ import io.javalin.http.NotFoundResponse;
 public class WordRiverController {
 
   private final JacksonMongoCollection<ContextPack> ctxCollection;
+  private final JacksonMongoCollection<WordList> wlCollection;
 
 
 /**
@@ -29,6 +30,7 @@ public class WordRiverController {
 
  public WordRiverController(MongoDatabase database) {
    ctxCollection = JacksonMongoCollection.builder().build(database, "packs", ContextPack.class);
+   wlCollection = JacksonMongoCollection.builder().build(database, "lists", WordList.class);
  }
 
 
@@ -72,5 +74,16 @@ public class WordRiverController {
     ctx.json(contextPack);
   }
 }
+
+public void addNewWordList(Context ctx) {
+  WordList newWordList = ctx.bodyValidator(WordList.class)
+    .check(wl -> wl.name !=null && wl.name.length() > 0)
+    .get();
+  ContextPack contextPack;
+  String id = ctx.pathParam("id");
+  contextPack = ctxCollection.findOneById(id);
+  contextPack.wordlist.add(newWordList);
+}
+
 
 }
