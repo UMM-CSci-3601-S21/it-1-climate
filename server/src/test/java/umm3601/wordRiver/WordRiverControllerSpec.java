@@ -155,7 +155,7 @@ public void AddContextPack() throws IOException {
   Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs");
   wordRiverController.addNewContextPack(ctx);
 
-  assertEquals(200, mockRes.getStatus());
+  assertEquals(201, mockRes.getStatus());
 
   String result = ctx.resultString();
   String id = jsonMapper.readValue(result, ObjectNode.class).get("id").asText();
@@ -193,13 +193,14 @@ public void AddNewWordList() throws IOException {
     Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id", ImmutableMap.of("id", testID));
     wordRiverController.addNewWordList(ctx);
 
-    assertEquals(200, mockRes.getStatus());
+    assertEquals(201, mockRes.getStatus());
     Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", theId)).first();
 
-   ArrayList<Object> theWordList = (ArrayList<Object>) ContextPack.get("wordlist");
 
-   assertTrue(theWordList.get(1).equals(testNewWordList));
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
 
+
+   assertTrue(cpWordLists.toString().contains(testNewWordList));
 
 }
 

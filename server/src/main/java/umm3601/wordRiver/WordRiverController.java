@@ -21,6 +21,7 @@ public class WordRiverController {
 
   private final JacksonMongoCollection<ContextPack> ctxCollection;
   private final JacksonMongoCollection<WordList> wlCollection;
+  private final JacksonMongoCollection<Word> wordCollection;
 
 
 /**
@@ -32,6 +33,7 @@ public class WordRiverController {
  public WordRiverController(MongoDatabase database) {
    ctxCollection = JacksonMongoCollection.builder().build(database, "packs", ContextPack.class);
    wlCollection = JacksonMongoCollection.builder().build(database, "lists", WordList.class);
+   wordCollection = JacksonMongoCollection.builder().build(database, "words", Word.class);
  }
 
 
@@ -78,14 +80,16 @@ public class WordRiverController {
 
 public void addNewWordList(Context ctx) {
   WordList newWordList = ctx.bodyValidator(WordList.class)
-    //.check(wl -> wl.name !=null && wl.name.length() > 0)
+    .check(wl -> wl.name !=null && wl.name.length() > 0)
     .get();
   //ContextPack contextPack;
   String id = ctx.pathParam("id");
   ctxCollection.updateById(id, Updates.push("wordlist", newWordList));
+  //ContextPack contextPack = ctxCollection.find
+  ctx.status(201);
+  ctx.json(ImmutableMap.of("id", id));
   //contextPack = ctxCollection.findOneById(id);
   //contextPack.wordlist.add(newWordList);
 }
-
 
 }
