@@ -114,7 +114,7 @@ export class MockCPService extends ContextPackService {
         }
     ];
     constructor() {
-        super(null);
+      super(null);
     }
 
     getPacks(): Observable<ContextPack[]> {

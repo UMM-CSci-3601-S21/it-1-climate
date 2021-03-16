@@ -16,7 +16,7 @@ export class ContextPackService {
 
   //'604fce57a00daf54835a0006';
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient) { }
 
 
   getPacks(): Observable<ContextPack[]> {
