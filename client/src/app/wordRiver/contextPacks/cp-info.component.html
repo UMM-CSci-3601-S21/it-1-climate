@@ -14,7 +14,7 @@
 
 
 
-<button mat-fab class="add-wl" matTooltip="Add Word List" matTooltipPosition="left" routerLink="/packs/:id/new" data-test="addCpButton">
+<button mat-fab class="add-wl" matTooltip="Add Word List" matTooltipPosition="left"  [routerLink]="['/packs',this.contextPack._id, 'new']" data-test="addCpButton">
   <mat-icon class="logo" aria-label="Add Word List">add</mat-icon>
 </button>
 

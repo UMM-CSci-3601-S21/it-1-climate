@@ -39,6 +39,7 @@ import { CpCardComponent } from './wordRiver/contextPacks/cp-card.component';
 import { AddCpComponent } from './wordRiver/contextPacks/add-cp.component';
 import { CpInfoComponent } from './wordRiver/contextPacks/cp-info.component';
 import { WlCardComponent } from './wordRiver/wordLists/wl-card.component';
+import { AddWlComponent } from './wordRiver/wordLists/add-wl.component';
 
 const MATERIAL_MODULES: any[] = [
 	MatListModule,
@@ -72,6 +73,7 @@ const MATERIAL_MODULES: any[] = [
 		AddCpComponent,
 		CpInfoComponent,
 		WlCardComponent,
+		AddWlComponent,
 	],
 	imports: [
 		BrowserModule,
