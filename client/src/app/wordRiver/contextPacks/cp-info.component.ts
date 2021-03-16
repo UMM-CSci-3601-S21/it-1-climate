@@ -15,6 +15,7 @@ export class CpInfoComponent implements OnInit, OnDestroy {
   contextPack: ContextPack;
   wordList: Array<WordList>;
   id: string;
+  _id: string;
   getCpSub: Subscription;
 
   constructor(private route: ActivatedRoute, private contextPackService: ContextPackService) { }
@@ -34,6 +35,7 @@ export class CpInfoComponent implements OnInit, OnDestroy {
         this.contextPack = contextPack;
         if(this.contextPack != null){
         this.wordList = contextPack.wordlist;
+        this._id = contextPack._id;
         }
       });
     });

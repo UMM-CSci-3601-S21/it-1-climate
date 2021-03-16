@@ -54,7 +54,7 @@ export class AddWlComponent implements OnInit {
       this.snackBar.open('Added the ' + this.addWordListForm.value.name + ' word list successfully', null, {
         duration: 2000,
       });
-      //this.router.navigate(['/packs/', newID]);
+      this.router.navigate(['/packs/', newID]);
     }, err => {
       console.log(err);
       this.snackBar.open('Failed to add the word list', 'OK', {
