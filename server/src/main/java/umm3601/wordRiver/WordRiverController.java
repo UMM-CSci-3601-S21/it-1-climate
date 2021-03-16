@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.google.common.collect.ImmutableMap;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Updates;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -77,12 +78,13 @@ public class WordRiverController {
 
 public void addNewWordList(Context ctx) {
   WordList newWordList = ctx.bodyValidator(WordList.class)
-    .check(wl -> wl.name !=null && wl.name.length() > 0)
+    //.check(wl -> wl.name !=null && wl.name.length() > 0)
     .get();
-  ContextPack contextPack;
+  //ContextPack contextPack;
   String id = ctx.pathParam("id");
-  contextPack = ctxCollection.findOneById(id);
-  contextPack.wordlist.add(newWordList);
+  ctxCollection.updateById(id, Updates.push("wordlist", newWordList));
+  //contextPack = ctxCollection.findOneById(id);
+  //contextPack.wordlist.add(newWordList);
 }
 
 

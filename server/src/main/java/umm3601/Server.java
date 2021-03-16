@@ -65,7 +65,7 @@ public class Server {
 
     server.get("/api/packs", wordRiverController::getPacks);
     server.get("/api/packs/:id", wordRiverController::getPack);
-    server.get("/api/packs/:id", wordRiverController::addNewWordList);
+    //server.get("/api/packs/:id", wordRiverController::addNewWordList);
 
     // Get the specified user
     server.get("/api/users/:id", userController::getUser);
@@ -78,6 +78,7 @@ public class Server {
     server.post("/api/users", userController::addNewUser);
 
     server.post("/api/packs", wordRiverController::addNewContextPack);
+    server.post("/api/packs/:id", wordRiverController::addNewWordList);
 
 
     server.exception(Exception.class, (e, ctx) -> {

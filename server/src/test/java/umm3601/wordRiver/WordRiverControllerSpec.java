@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -153,7 +155,7 @@ public void AddContextPack() throws IOException {
   Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs");
   wordRiverController.addNewContextPack(ctx);
 
-  assertEquals(201, mockRes.getStatus());
+  assertEquals(200, mockRes.getStatus());
 
   String result = ctx.resultString();
   String id = jsonMapper.readValue(result, ObjectNode.class).get("id").asText();
@@ -179,21 +181,25 @@ public void AddNewWordList() throws IOException {
     + "\"nouns\": [],"
     + "\"verbs\": [],"
     + "\"adjectives\": [],"
-    + "\"misc\": [],"
+    + "\"misc\": []"
     + "}";
 
-    ContextPack contextPack = testPacks[2];
-
+    String testID = batmanId.toHexString();
     mockReq.setBodyContent(testNewWordList);
     mockReq.setMethod("POST");
 
-    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id");
+    ObjectId theId = batmanId;
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id", ImmutableMap.of("id", testID));
     wordRiverController.addNewWordList(ctx);
 
-    assertEquals(201, mockRes.getStatus());
+    assertEquals(200, mockRes.getStatus());
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", theId)).first();
 
-    //Verify the word list was added to the context pack
-    assertEquals(testPacks[2].wordlist.contains(testNewWordList));
+   ArrayList<Object> theWordList = (ArrayList<Object>) ContextPack.get("wordlist");
+
+   assertTrue(theWordList.get(1).equals(testNewWordList));
+
 
 }
 
