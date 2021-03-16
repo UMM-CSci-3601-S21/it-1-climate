@@ -28,7 +28,22 @@ describe('Cp List', () => {
             cy.get('#icon').first().should('be.visible');
             cy.get('.cp-card-name').first().should('have.text', cpName);
             cy.get('.cp-card-enabled').first().should('have.value', cpEnabled);
+
         });
+    });
+
+    it('Should click "View Context Pack" on a context pack and have one word list', () => {
+      page.getCpCards().first().then((card) => {
+          const cpName = card.find('.cp-card-name').text();
+          const cpEnabled = card.find('.cp-card-enabled').text();
+
+          page.clickViewCp(page.getCpCards().first());
+
+          cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}/);
+
+         page.getWlCard().should('have.length', 1);
+
+      });
     });
 
     it('Should click add context pack and go to the right URL',() => {

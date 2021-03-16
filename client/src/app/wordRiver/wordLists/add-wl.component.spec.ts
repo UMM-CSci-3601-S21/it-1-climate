@@ -9,8 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AddWlComponent } from './add-wl.component';
-import { MockWlService } from '';
-import { WordListService } from '';
+import { MockCPService } from '../../../testing/context-pack.service.mock';
+import { ContextPackService } from '../context-pack.service';
 
 describe('AddWlComponent', () => {
   let addWordList: AddWlComponent;
@@ -31,10 +31,10 @@ describe('AddWlComponent', () => {
         RouterTestingModule
       ],
       declarations: [ AddWlComponent ],
-      providers: [{ provide: WordListService, useValue: new MockWlService() }]
+      providers: [{ provide: ContextPackService, useValue: new MockCPService() }]
     })
     .compileComponents().catch(error => {
-      expect(error).toBeNull;
+      expect(error).toBeNull();
     });
   }));
 

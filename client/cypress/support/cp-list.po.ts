@@ -17,4 +17,8 @@ export class CpListPage {
     addCpButton() {
         return cy.get('[data-test=addCpButton]');
     }
+
+  getWlCard() {
+    return cy.get('.word-list-container app-wl-card');
+  }
 }
