@@ -1,8 +1,7 @@
 <mat-card class="cp-card" *ngIf="this.contextPack">
   <mat-card-header>
     <mat-card-title class="cp-card-name">
-      <igx-avatar id ="icon" src={{this.contextPack.icon}}>
-      </igx-avatar>
+     <img mat-card-avatar id ="icon" src={{this.contextPack.icon}}>
       <h5 id="name">{{this.contextPack.name}}</h5>
     </mat-card-title>
   </mat-card-header>

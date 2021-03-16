@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { IgxAvatarModule } from 'igniteui-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -85,7 +84,6 @@ const MATERIAL_MODULES: any[] = [
 		HttpClientModule,
 		MATERIAL_MODULES,
 		LayoutModule,
-    IgxAvatarModule
 	],
 	providers: [
 		UserService,
