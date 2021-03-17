@@ -22,9 +22,18 @@
     </div>
   </mat-card-header>
     <p>Enabled: <span class="wl-card-enabled">{{ this.wordList.enabled }}</span></p>
-    <button mat-fab class="add-word" matTooltip="Add Word" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name]" data-test="addCpButton">
-      <mat-icon class="logo" aria-label="Add Word">add</mat-icon>
+    <button mat-raised-button class="add-word" matTooltip="Add Noun" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'nouns']" data-test="addCpButton">
+      Add Nouns
   </button>
+  <button mat-raised-button class="add-word" matTooltip="Add Adjectives" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'adjectives']" data-test="addCpButton">
+    Add Adjectives
+</button>
+<button mat-raised-button class="add-word" matTooltip="Add Verbs" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'verbs']" data-test="addCpButton">
+  Add Verbs
+</button>
+<button mat-raised-button class="add-word" matTooltip="Add Misc" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'misc']" data-test="addCpButton">
+  Add Misc
+</button>
 </mat-card>
 
 
