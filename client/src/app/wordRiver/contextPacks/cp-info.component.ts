@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { ContextPack } from '../context-pack';
 import { ActivatedRoute } from '@angular/router';
 import { WordList } from '../word-list';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-cp-info',

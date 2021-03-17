@@ -5,7 +5,6 @@ import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { ContextPack } from './context-pack';
 import { WordList } from './word-list';
-import { Router } from '@angular/router';
 import { Word } from './word';
 
 

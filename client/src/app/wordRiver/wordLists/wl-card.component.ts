@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ContextPack } from '../context-pack';
 import { WordList } from '../word-list';
 import { CpInfoComponent } from '../contextPacks/cp-info.component';
-import { ContextPackService } from '../context-pack.service';
 
 @Component({
   selector: 'app-wl-card',
