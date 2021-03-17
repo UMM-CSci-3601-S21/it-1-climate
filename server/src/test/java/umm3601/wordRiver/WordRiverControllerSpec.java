@@ -207,13 +207,6 @@ public void AddNewWordList() throws IOException {
    assertTrue(theContextPackWordLists.contains("Document{{name=Test Wordlist, enabled=true, nouns=[], verbs=[], adjectives=[], misc=[]}}"));
 }
 
-    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
-
-
-   assertTrue(cpWordLists.toString().contains(testNewWordList));
-
-}
-
 @Test
 public void AddInvalidName() throws IOException {
 
