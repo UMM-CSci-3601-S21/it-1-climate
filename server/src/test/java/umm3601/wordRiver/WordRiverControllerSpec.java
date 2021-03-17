@@ -27,6 +27,7 @@ import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import org.eclipse.jetty.util.ajax.JSON;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -175,6 +176,7 @@ public void AddContextPack() throws IOException {
 
 @Test
 public void AddNewWordList() throws IOException {
+
   String testNewWordList = "{"
     + "\"name\": \"Test Wordlist\","
     + "\"enabled\": true,"
@@ -183,6 +185,7 @@ public void AddNewWordList() throws IOException {
     + "\"adjectives\": [],"
     + "\"misc\": []"
     + "}";
+
 
     String testID = batmanId.toHexString();
     mockReq.setBodyContent(testNewWordList);
@@ -196,6 +199,13 @@ public void AddNewWordList() throws IOException {
     assertEquals(201, mockRes.getStatus());
     Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", theId)).first();
 
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+
+
+   assertTrue(theContextPackWordLists.contains("Document{{name=Test Wordlist, enabled=true, nouns=[], verbs=[], adjectives=[], misc=[]}}"));
+}
 
     ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
 

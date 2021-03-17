@@ -92,4 +92,17 @@ public void addNewWordList(Context ctx) {
   //contextPack.wordlist.add(newWordList);
 }
 
+public void addNewWord(Context ctx) {
+  Word newWord = ctx.bodyValidator(Word.class).get();
+  String id = ctx.pathParam("id");
+  String wlName = ctx.pathParam("name");
+  ContextPack contextPack = ctxCollection.findOneById(id);
+  String theWlName = contextPack.wordlist.get(0).name;
+  WordList theWordList = contextPack.wordlist.get(0);
+  theWordList.nouns.add(newWord);
+  ctxCollection.updateById(id,Updates.push("wordlist", theWordList));
+  ctx.status(201);
+    ctx.json(ImmutableMap.of("id", id));
+    }
 }
+
