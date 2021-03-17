@@ -14,7 +14,6 @@ import { Word } from './word';
 export class ContextPackService {
   readonly contextPackUrl: string = environment.apiUrl + 'packs';
 
-  //'604fce57a00daf54835a0006';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -47,7 +46,8 @@ export class ContextPackService {
     const theUrls: string = url1[4];
     //Gets the name of the wordlist form the url
     const theUrls3: string = url1[5];
-    return this.httpClient.post<{id: string}>(this.contextPackUrl + '/' + theUrls + '/' + theUrls3, newWord)
+    const theUrls4: string = url1[6];
+    return this.httpClient.post<{id: string}>(this.contextPackUrl + '/' + theUrls + '/' + theUrls3 + '/' + theUrls4, newWord)
     .pipe(map(res => res.id));
   }
 }
