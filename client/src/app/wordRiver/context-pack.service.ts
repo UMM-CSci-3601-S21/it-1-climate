@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { ContextPack } from './context-pack';
 import { WordList } from './word-list';
 import { Router } from '@angular/router';
+import { Word } from './word';
 
 
 @Injectable({
@@ -39,6 +40,16 @@ export class ContextPackService {
 
 
     return this.httpClient.post<{id: string}>(this.contextPackUrl + '/' + theUrls, newWordList).pipe(map(res => res.id));
+  }
+
+  addWord(newWord: Word): Observable<string> {
+    const url1: string[] = location.href.split('/');
+    //Gets the id of the context pack from the current url
+    const theUrls: string = url1[4];
+    //Gets the name of the wordlist form the url
+    const theUrls3: string = url1[5];
+    return this.httpClient.post<{id: string}>(this.contextPackUrl + '/' + theUrls + '/' + theUrls3, newWord)
+    .pipe(map(res => res.id));
   }
 }
 

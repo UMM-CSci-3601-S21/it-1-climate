@@ -44,4 +44,5 @@ export class CpListComponent implements OnInit, OnDestroy {
       this.getPackSub.unsubscribe();
     }
   }
+
 }

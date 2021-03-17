@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { ContextPack } from '../context-pack';
 import { ActivatedRoute } from '@angular/router';
 import { WordList } from '../word-list';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-cp-info',
@@ -12,10 +13,11 @@ import { WordList } from '../word-list';
 })
 export class CpInfoComponent implements OnInit, OnDestroy {
 
+  static id3: string;
   contextPack: ContextPack;
   wordList: Array<WordList>;
   id: string;
-  _id: string;
+ _id: string;
   getCpSub: Subscription;
 
   constructor(private route: ActivatedRoute, private contextPackService: ContextPackService) { }
@@ -36,10 +38,12 @@ export class CpInfoComponent implements OnInit, OnDestroy {
         if(this.contextPack != null){
         this.wordList = contextPack.wordlist;
         this._id = contextPack._id;
+        CpInfoComponent.id3 = contextPack._id;
         }
       });
     });
   }
+
 
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngOnDestroy(): void {
@@ -48,4 +52,6 @@ export class CpInfoComponent implements OnInit, OnDestroy {
     }
   }
 
+
 }
+
