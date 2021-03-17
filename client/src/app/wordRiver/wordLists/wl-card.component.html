@@ -22,16 +22,16 @@
     </div>
   </mat-card-header>
     <p>Enabled: <span class="wl-card-enabled">{{ this.wordList.enabled }}</span></p>
-    <button mat-raised-button class="add-word" matTooltip="Add Noun" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'nouns']" data-test="addCpButton">
+    <button mat-raised-button class="add-word" matTooltip="Add Noun" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'nouns']" data-test="addNounButton">
       Add Nouns
   </button>
-  <button mat-raised-button class="add-word" matTooltip="Add Adjectives" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'adjectives']" data-test="addCpButton">
+  <button mat-raised-button class="add-word" matTooltip="Add Adjectives" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'adjectives']" data-test="addAdjectiveButton">
     Add Adjectives
 </button>
-<button mat-raised-button class="add-word" matTooltip="Add Verbs" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'verbs']" data-test="addCpButton">
+<button mat-raised-button class="add-word" matTooltip="Add Verbs" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'verbs']" data-test="addVerbButton">
   Add Verbs
 </button>
-<button mat-raised-button class="add-word" matTooltip="Add Misc" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'misc']" data-test="addCpButton">
+<button mat-raised-button class="add-word" matTooltip="Add Misc" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name, 'misc']" data-test="addMiscButton">
   Add Misc
 </button>
 </mat-card>
