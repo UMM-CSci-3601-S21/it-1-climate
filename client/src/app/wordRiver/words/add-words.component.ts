@@ -40,7 +40,7 @@ export class AddWordsComponent implements OnInit {
         Validators.maxLength(20),
       ])),
 
-      forms: new FormControl('bus, buses', Validators.compose([ ]))
+      forms: new FormControl('', Validators.compose([ ]))
     });
   }
   submitForm(){
