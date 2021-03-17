@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'users/new', component: AddUserComponent},
   {path: 'users/:id', component: UserProfileComponent},
   {path: 'packs/:id/new', component: AddWlComponent},
-  {path: 'packs/:id/:name', component: AddWordsComponent}
+  {path: 'packs/:id/:name/:type', component: AddWordsComponent}
 ];
 
 @NgModule({

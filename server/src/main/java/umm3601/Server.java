@@ -81,7 +81,7 @@ public class Server {
 
     server.post("/api/packs", wordRiverController::addNewContextPack);
     server.post("/api/packs/:id", wordRiverController::addNewWordList);
-    server.post("/api/packs/:id/:name", wordRiverController::addNewWord);
+    server.post("/api/packs/:id/:name/:type", wordRiverController::addNewWord);
 
 
 
