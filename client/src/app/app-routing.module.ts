@@ -9,6 +9,7 @@ import { AddCpComponent } from './wordRiver/contextPacks/add-cp.component';
 import { CpInfoComponent } from './wordRiver/contextPacks/cp-info.component';
 import { WlCardComponent } from './wordRiver/wordLists/wl-card.component';
 import { AddWlComponent } from './wordRiver/wordLists/add-wl.component';
+import { AddWordsComponent } from './wordRiver/words/add-words.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'packs/:id', component: CpInfoComponent},
   {path: 'users/new', component: AddUserComponent},
   {path: 'users/:id', component: UserProfileComponent},
-  {path: 'packs/:id/new', component: AddWlComponent}
+  {path: 'packs/:id/new', component: AddWlComponent},
+  {path: 'packs/:id/:name', component: AddWordsComponent}
 ];
 
 @NgModule({

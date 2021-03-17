@@ -22,6 +22,9 @@
     </div>
   </mat-card-header>
     <p>Enabled: <span class="wl-card-enabled">{{ this.wordList.enabled }}</span></p>
+    <button mat-fab class="add-word" matTooltip="Add Word" matTooltipPosition="left" [routerLink]="['/packs', _id, wordList.name]" data-test="addCpButton">
+      <mat-icon class="logo" aria-label="Add Word">add</mat-icon>
+  </button>
 </mat-card>
 
 

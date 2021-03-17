@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ContextPack } from '../context-pack';
 import { WordList } from '../word-list';
 import { ContextPackService } from '../context-pack.service';
 
@@ -42,7 +41,12 @@ export class AddWlComponent implements OnInit {
       enabled: new FormControl('', Validators.compose([
         Validators.required, // decide how we want to display this option
         Validators.pattern('^(true|false)$'),
-      ]))
+      ])),
+
+      nouns: new FormControl([]),
+      adjectives: new FormControl([]),
+      verbs: new FormControl([]),
+      misc: new FormControl([])
     });
   }
   ngOnInit(): void {
