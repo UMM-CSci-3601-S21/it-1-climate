@@ -80,9 +80,21 @@ describe('AddWordsComponent', () => {
       expect(wordControl.hasError('maxlength')).toBeTruthy();
     });
 
-    it('should not allow digits in the name', () => {
+    it('should allow digits in the word', () => {
       wordControl.setValue('n00b');
       expect(wordControl.valid).toBeTruthy();
+    });
+  });
+
+  describe('separateForms()', () => {
+
+    it('should correctly separate an string of words into an array', () => {
+      const finalArray = ['bus', 'buses'];
+
+      const ourArray = addWordsComponent.separateForms('bus, buses');
+
+      expect(finalArray).toEqual(ourArray);
+
     });
   });
 });
