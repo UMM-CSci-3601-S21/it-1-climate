@@ -7,7 +7,92 @@ import { WordList } from './word-list';
 import { Word } from './word';
 
 describe('ContextPackService', () => {
-  const testList: Array<WordList> = []; // Replace this with an actual word list later
+  const testWord: Word = {
+    word: 'car',
+    forms: ['car', 'cars']
+  };
+  const testList: Array<WordList> = [
+    {
+      name: 'Langley',
+      enabled: true,
+      nouns: [
+        {
+          word: 'Joker',
+          forms: [
+            'Joker'
+          ]
+        },
+        {
+          word: 'villain',
+          forms: [
+            'villain', 'villains'
+          ]
+        }
+      ],
+      verbs: [
+        {
+          word: 'fly',
+          forms: [
+            'fly',
+            'flown',
+            'flew'
+          ]
+        },
+        {
+          word: 'dance',
+          forms: [
+            'dance',
+            'danced'
+          ]
+        },
+        {
+          word: 'steal',
+          forms: [
+            'steal',
+            'stole'
+          ]
+        },
+        {
+          word: 'laugh',
+          forms: [
+            'laugh',
+            'laughed',
+            'laughing'
+          ]
+        },
+        {
+          word: 'hide',
+          forms: [
+            'hide',
+            'hid',
+            'hiding'
+          ]
+        }
+      ],
+      adjectives: [
+        {
+          word: 'evil',
+          forms: [
+            'evil'
+          ]
+        },
+        {
+          word: 'sad',
+          forms: [
+            'sad'
+          ]
+        }
+      ],
+      misc: [
+        {
+          word: 'the',
+          forms: [
+            'the'
+          ]
+        }
+      ]
+    }
+  ];
   const testCPs: ContextPack[] = [
     {
       _id: 'meow',
@@ -77,6 +162,19 @@ describe('ContextPackService', () => {
     expect(req.request.body).toEqual(testCPs[2]);
 
     req.flush({id: 'test'});
+  });
+
+  it('addWordList() returns the right id', () => {
+    service.addWordList(testList[0]).subscribe(
+      id => expect(id).toBe('woof')
+    );
+  });
+
+  it('addWord() returns the right id', () => {
+
+    service.addWord(testWord).subscribe(
+      id => expect(id).toBe('woof')
+    );
   });
 
 
