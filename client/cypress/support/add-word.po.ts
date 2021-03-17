@@ -3,7 +3,7 @@ import  {Word}  from 'src/app/wordRiver/word';
 export class AddWordPage {
 
   navigateTo() {
-    return cy.visit('/packs/604cdf3cafacd4fba940b683/Mcfadden');
+    return cy.visit('packs/604cdf3cbb468a7463ad4d85/Woods/nouns');
   }
 
   getTitle() {
@@ -12,7 +12,7 @@ export class AddWordPage {
 
   addWordButton() {
     return cy.get('[data-test=addWordButton]');
-    }
+  }
 
   selectMatSelectValue(select: Cypress.Chainable, value: string) {
     // Find and click the drop down
