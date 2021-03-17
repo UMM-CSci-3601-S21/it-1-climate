@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import com.google.common.collect.ImmutableMap;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Updates;
-import com.mongodb.internal.validator.UpdateFieldNameValidator;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -86,11 +85,10 @@ public void addNewWordList(Context ctx) {
   //ContextPack contextPack;
   String id = ctx.pathParam("id");
   ctxCollection.updateById(id, Updates.push("wordlist", newWordList));
-  //ContextPack contextPack = ctxCollection.find
+
   ctx.status(201);
-  ctx.json(ImmutableMap.of("id", id));
-  //contextPack = ctxCollection.findOneById(id);
-  //contextPack.wordlist.add(newWordList);
+  ctx.json(ImmutableMap.of("id", ctxCollection.findOneById(id)._id));
+
 }
 
 public void addNewWord(Context ctx) {

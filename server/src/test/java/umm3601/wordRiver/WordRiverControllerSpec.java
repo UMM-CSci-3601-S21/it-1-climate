@@ -208,11 +208,72 @@ public void AddNewWordList() throws IOException {
 }
 
 @Test
-public void AddNewWord() throws IOException {
+public void AddNewWordNoun() throws IOException {
+
+  String testNewWord = "{"
+    + "\"word\": \"Test Word\","
+    + "\"forms\": [\"test\"]"
+    + "}";
+
+
+
+    String testID = batmanId.toHexString();
+    mockReq.setBodyContent(testNewWord.toString());
+    mockReq.setMethod("POST");
+
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name/:type", ImmutableMap.of("id", testID, "name", "iron man", "type", "nouns"));
+    wordRiverController.addNewWord(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", batmanId)).first();
+
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+    System.out.println(theContextPackWordLists);
+
+
+   assertTrue(theContextPackWordLists.contains("Document{{word=Test Word, forms=[test]}}]"));
+}
+
+@Test
+public void AddNewWordAdjective() throws IOException {
+
+  String testNewWord = "{"
+    + "\"word\": \"Test Word\","
+    + "\"forms\": [\"test\"]"
+    + "}";
+
+
+
+    String testID = batmanId.toHexString();
+    mockReq.setBodyContent(testNewWord.toString());
+    mockReq.setMethod("POST");
+
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name/:type", ImmutableMap.of("id", testID, "name", "iron man", "type", "adjectives"));
+    wordRiverController.addNewWord(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", batmanId)).first();
+
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+    System.out.println(theContextPackWordLists);
+
+   assertTrue(theContextPackWordLists.contains("Document{{word=Test Word, forms=[test]}}]"));
+}
+
+@Test
+public void AddNewWordVerb() throws IOException {
 
   String testNewWordList = "{"
-    + "\"word\": \"Test Word\","
-    + "\"forms\": []"
+    + "\"word\": \"run\","
+    + "\"forms\": [\"runs\"]"
     + "}";
 
     String testID = batmanId.toHexString();
@@ -220,10 +281,50 @@ public void AddNewWord() throws IOException {
     mockReq.setMethod("POST");
 
 
-    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name", ImmutableMap.of("id", testID, "name", "iron man"));
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name/:type", ImmutableMap.of("id", testID, "name", "iron man", "type", "verbs"));
     wordRiverController.addNewWord(ctx);
 
     assertEquals(201, mockRes.getStatus());
+
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", batmanId)).first();
+
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+    System.out.println(theContextPackWordLists);
+
+
+   assertTrue(theContextPackWordLists.contains("Document{{word=run, forms=[runs]}}]"));
+}
+
+@Test
+public void AddNewWordMisc() throws IOException {
+
+  String testNewWordList = "{"
+    + "\"word\": \"c3po\","
+    + "\"forms\": [\"c3po\"]"
+    + "}";
+
+    String testID = batmanId.toHexString();
+    mockReq.setBodyContent(testNewWordList);
+    mockReq.setMethod("POST");
+
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name/:type", ImmutableMap.of("id", testID, "name", "iron man", "type", "misc"));
+    wordRiverController.addNewWord(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", batmanId)).first();
+
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+    System.out.println(theContextPackWordLists);
+
+
+   assertTrue(theContextPackWordLists.contains("Document{{word=c3po, forms=[c3po]}}]"));
+
 }
 
 @Test
