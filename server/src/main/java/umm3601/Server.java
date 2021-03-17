@@ -77,6 +77,8 @@ public class Server {
     server.post("/api/users", userController::addNewUser);
 
     server.post("/api/packs", wordRiverController::addNewContextPack);
+    server.post("/api/packs/:id", wordRiverController::addNewWordList);
+    server.post("/api/packs/:id/:name/:type", wordRiverController::addNewWord);
 
     server.exception(Exception.class, (e, ctx) -> {
       ctx.status(500);

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { IgxAvatarModule } from 'igniteui-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +37,9 @@ import { ContextPackService } from './wordRiver/context-pack.service';
 import { CpCardComponent } from './wordRiver/contextPacks/cp-card.component';
 import { AddCpComponent } from './wordRiver/contextPacks/add-cp.component';
 import { CpInfoComponent } from './wordRiver/contextPacks/cp-info.component';
+import { WlCardComponent } from './wordRiver/wordLists/wl-card.component';
+import { AddWlComponent } from './wordRiver/wordLists/add-wl.component';
+import { AddWordsComponent } from './wordRiver/words/add-words.component';
 
 const MATERIAL_MODULES: any[] = [
 	MatListModule,
@@ -70,6 +72,9 @@ const MATERIAL_MODULES: any[] = [
 		CpCardComponent,
 		AddCpComponent,
 		CpInfoComponent,
+		WlCardComponent,
+		AddWlComponent,
+		AddWordsComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -81,7 +86,6 @@ const MATERIAL_MODULES: any[] = [
 		HttpClientModule,
 		MATERIAL_MODULES,
 		LayoutModule,
-    IgxAvatarModule
 	],
 	providers: [
 		UserService,

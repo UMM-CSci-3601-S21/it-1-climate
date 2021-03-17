@@ -1,10 +1,20 @@
 <div fxLayout="row">
   <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
-    <app-cp-card [contextPack]="this.contextPack"></app-cp-card>
+    <app-cp-card class="cp-display" [contextPack]="this.contextPack"></app-cp-card>
+    </div>
   </div>
-</div>
 
-<button mat-fab class="add-cp" matTooltip="Add Word List" matTooltipPosition="left" routerLink="/packs/:id/new" data-test="addCpButton">
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+      <div fxLayout="row wrap" fxLayoutGap="10px" class="word-list-container">
+        <app-wl-card simple="true" *ngFor="let wl of wordList" class="wl-card" [wordList]="wl" fxFlex="1 1 280px"></app-wl-card>
+      </div>
+   </div>
+ </div>
+
+
+
+<button mat-fab class="add-wl" matTooltip="Add Word List" matTooltipPosition="left"  [routerLink]="['/packs', _id, 'new']" data-test="addCpButton">
   <mat-icon class="logo" aria-label="Add Word List">add</mat-icon>
 </button>
 

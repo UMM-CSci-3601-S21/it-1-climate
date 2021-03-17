@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.google.common.collect.ImmutableMap;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Updates;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -19,6 +20,8 @@ import io.javalin.http.NotFoundResponse;
 public class WordRiverController {
 
   private final JacksonMongoCollection<ContextPack> ctxCollection;
+  private final JacksonMongoCollection<WordList> wlCollection;
+  private final JacksonMongoCollection<Word> wordCollection;
 
 
 /**
@@ -29,6 +32,8 @@ public class WordRiverController {
 
  public WordRiverController(MongoDatabase database) {
    ctxCollection = JacksonMongoCollection.builder().build(database, "packs", ContextPack.class);
+   wlCollection = JacksonMongoCollection.builder().build(database, "lists", WordList.class);
+   wordCollection = JacksonMongoCollection.builder().build(database, "words", Word.class);
  }
 
 
@@ -42,11 +47,12 @@ public class WordRiverController {
     ctx.json(ctxCollection.find(new Document()).into(new ArrayList<>()));
   }
 
+
+
  public void addNewContextPack(Context ctx) {
    ContextPack newContextPack = ctx.bodyValidator(ContextPack.class)
     .check(cp -> cp.name !=null && cp.name.length() > 0)
     .check(cp -> cp.icon !=null)
-    //.check(cp -> cp.wordlist != null )
     .get();
 
     ctxCollection.insertOne(newContextPack);
@@ -71,4 +77,66 @@ public class WordRiverController {
   }
 }
 
+public void addNewWordList(Context ctx) {
+  WordList newWordList = ctx.bodyValidator(WordList.class)
+    .check(wl -> wl.name !=null && wl.name.length() > 0)
+    .get();
+  String id = ctx.pathParam("id");
+  ctxCollection.updateById(id, Updates.push("wordlist", newWordList));
+
+  ctx.status(201);
+  ctx.json(ImmutableMap.of("id", ctxCollection.findOneById(id)._id));
+
 }
+
+public void addNewWord(Context ctx) {
+  Word newWord = ctx.bodyValidator(Word.class).get();
+  String id = ctx.pathParam("id");
+  String wlName = ctx.pathParam("name");
+  String wordType = ctx.pathParam("type");
+  ContextPack contextPack = ctxCollection.findOneById(id);
+  if(wordType.equals("nouns")){
+  for(int i = 0; i < contextPack.wordlist.size(); i++) {
+    WordList theWordList = contextPack.wordlist.get(i);
+    if (theWordList.name.equals(wlName)){
+      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
+      theWordList.nouns.add(newWord);
+      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
+    }
+  }
+}
+else if(wordType.equals("adjectives")) {
+  for(int i = 0; i < contextPack.wordlist.size(); i++) {
+    WordList theWordList = contextPack.wordlist.get(i);
+    if (theWordList.name.equals(wlName)){
+      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
+      theWordList.adjectives.add(newWord);
+      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
+    }
+  }
+}
+else if (wordType.equals("verbs")) {
+  for(int i = 0; i < contextPack.wordlist.size(); i++) {
+    WordList theWordList = contextPack.wordlist.get(i);
+    if (theWordList.name.equals(wlName)){
+      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
+      theWordList.verbs.add(newWord);
+      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
+    }
+  }
+}
+else if (wordType.equals("misc")) {
+  for(int i = 0; i < contextPack.wordlist.size(); i++) {
+    WordList theWordList = contextPack.wordlist.get(i);
+    if (theWordList.name.equals(wlName)){
+      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
+      theWordList.misc.add(newWord);
+      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
+    }
+  }
+}
+    ctx.status(201);
+  ctx.json(ImmutableMap.of("id", id));
+}
+}
+

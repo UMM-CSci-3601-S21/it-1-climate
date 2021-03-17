@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,9 +23,11 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import org.eclipse.jetty.util.ajax.JSON;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -169,6 +172,159 @@ public void AddContextPack() throws IOException {
   assertEquals("image.png", addedContextPack.getString("icon"));
   assertEquals(true, addedContextPack.getBoolean("enabled"));
   assertNotNull(addedContextPack.get("wordlist"));
+}
+
+@Test
+public void AddNewWordList() throws IOException {
+
+  String testNewWordList = "{"
+    + "\"name\": \"Test Wordlist\","
+    + "\"enabled\": true,"
+    + "\"nouns\": [],"
+    + "\"verbs\": [],"
+    + "\"adjectives\": [],"
+    + "\"misc\": []"
+    + "}";
+
+
+    String testID = batmanId.toHexString();
+    mockReq.setBodyContent(testNewWordList);
+    mockReq.setMethod("POST");
+
+    ObjectId theId = batmanId;
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id", ImmutableMap.of("id", testID));
+    wordRiverController.addNewWordList(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", theId)).first();
+
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+
+
+   assertTrue(theContextPackWordLists.contains("Document{{name=Test Wordlist, enabled=true, nouns=[], verbs=[], adjectives=[], misc=[]}}"));
+}
+
+@Test
+public void AddNewWordNoun() throws IOException {
+
+  String testNewWord = "{"
+    + "\"word\": \"Test Word\","
+    + "\"forms\": [\"test\"]"
+    + "}";
+
+
+
+    String testID = batmanId.toHexString();
+    mockReq.setBodyContent(testNewWord.toString());
+    mockReq.setMethod("POST");
+
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name/:type", ImmutableMap.of("id", testID, "name", "iron man", "type", "nouns"));
+    wordRiverController.addNewWord(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", batmanId)).first();
+
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+    System.out.println(theContextPackWordLists);
+
+
+   assertTrue(theContextPackWordLists.contains("Document{{word=Test Word, forms=[test]}}]"));
+}
+
+@Test
+public void AddNewWordAdjective() throws IOException {
+
+  String testNewWord = "{"
+    + "\"word\": \"Test Word\","
+    + "\"forms\": [\"test\"]"
+    + "}";
+
+
+
+    String testID = batmanId.toHexString();
+    mockReq.setBodyContent(testNewWord.toString());
+    mockReq.setMethod("POST");
+
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name/:type", ImmutableMap.of("id", testID, "name", "iron man", "type", "adjectives"));
+    wordRiverController.addNewWord(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", batmanId)).first();
+
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+    System.out.println(theContextPackWordLists);
+
+   assertTrue(theContextPackWordLists.contains("Document{{word=Test Word, forms=[test]}}]"));
+}
+
+@Test
+public void AddNewWordVerb() throws IOException {
+
+  String testNewWordList = "{"
+    + "\"word\": \"run\","
+    + "\"forms\": [\"runs\"]"
+    + "}";
+
+    String testID = batmanId.toHexString();
+    mockReq.setBodyContent(testNewWordList);
+    mockReq.setMethod("POST");
+
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name/:type", ImmutableMap.of("id", testID, "name", "iron man", "type", "verbs"));
+    wordRiverController.addNewWord(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", batmanId)).first();
+
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+    System.out.println(theContextPackWordLists);
+
+
+   assertTrue(theContextPackWordLists.contains("Document{{word=run, forms=[runs]}}]"));
+}
+
+@Test
+public void AddNewWordMisc() throws IOException {
+
+  String testNewWordList = "{"
+    + "\"word\": \"c3po\","
+    + "\"forms\": [\"c3po\"]"
+    + "}";
+
+    String testID = batmanId.toHexString();
+    mockReq.setBodyContent(testNewWordList);
+    mockReq.setMethod("POST");
+
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name/:type", ImmutableMap.of("id", testID, "name", "iron man", "type", "misc"));
+    wordRiverController.addNewWord(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+
+    Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", batmanId)).first();
+
+    @SuppressWarnings("unchecked")
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    String theContextPackWordLists = cpWordLists.toString();
+    System.out.println(theContextPackWordLists);
+
+
+   assertTrue(theContextPackWordLists.contains("Document{{word=c3po, forms=[c3po]}}]"));
+
 }
 
 @Test

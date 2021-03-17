@@ -67,6 +67,7 @@ export class AddCpComponent implements OnInit {
       });
       this.router.navigate(['/packs/', newID]);
     }, err => {
+      console.log(err);
       this.snackBar.open('Failed to add the context pack', 'OK', {
         duration: 5000,
       });

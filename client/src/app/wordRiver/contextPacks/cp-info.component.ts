@@ -3,6 +3,7 @@ import { ContextPackService } from '../context-pack.service';
 import { Subscription } from 'rxjs';
 import { ContextPack } from '../context-pack';
 import { ActivatedRoute } from '@angular/router';
+import { WordList } from '../word-list';
 
 @Component({
   selector: 'app-cp-info',
@@ -11,8 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CpInfoComponent implements OnInit, OnDestroy {
 
+  static id3: string;
   contextPack: ContextPack;
+  wordList: Array<WordList>;
   id: string;
+ _id: string;
   getCpSub: Subscription;
 
   constructor(private route: ActivatedRoute, private contextPackService: ContextPackService) { }
@@ -23,12 +27,22 @@ export class CpInfoComponent implements OnInit, OnDestroy {
     // to display the newly requested user.
     this.route.paramMap.subscribe((pmap) => {
       this.id = pmap.get('id');
+      console.log(this.id);
       if (this.getCpSub) {
         this.getCpSub.unsubscribe();
       }
-      this.getCpSub = this.contextPackService.getPack(this.id).subscribe(contextPack => this.contextPack = contextPack);
+      // eslint-disable-next-line curly
+      if(this.id)this.getCpSub = this.contextPackService.getPack(this.id).subscribe(contextPack => {
+        this.contextPack = contextPack;
+        if(this.contextPack != null){
+        this.wordList = contextPack.wordlist;
+        this._id = contextPack._id;
+        CpInfoComponent.id3 = contextPack._id;
+        }
+      });
     });
   }
+
 
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngOnDestroy(): void {
@@ -37,4 +51,6 @@ export class CpInfoComponent implements OnInit, OnDestroy {
     }
   }
 
+
 }
+
