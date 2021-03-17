@@ -29,7 +29,7 @@ export class AddWlComponent implements OnInit {
   };
 
   constructor(private fb: FormBuilder, private cpService: ContextPackService,
-    private snackBar: MatSnackBar, private router: Router) { } //add wordListService
+    private snackBar: MatSnackBar, private router: Router) { }
 
   createForms() {
     this.addWordListForm = this.fb.group({
@@ -39,7 +39,7 @@ export class AddWlComponent implements OnInit {
       ])),
 
       enabled: new FormControl('', Validators.compose([
-        Validators.required, // decide how we want to display this option
+        Validators.required,
         Validators.pattern('^(true|false)$'),
       ])),
 

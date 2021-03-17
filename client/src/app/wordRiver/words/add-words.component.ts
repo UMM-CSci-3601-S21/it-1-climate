@@ -51,7 +51,6 @@ export class AddWordsComponent implements OnInit {
       this.snackBar.open('Added ' + this.addWordForm.value.word + ' successfully', null, {
         duration: 2000,
       });
-      //this.router.navigate(['/packs/', newID]);
     }, err => {
       console.log(err);
       this.snackBar.open('Failed to add the word', 'OK', {

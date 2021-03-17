@@ -53,7 +53,6 @@ public class WordRiverController {
    ContextPack newContextPack = ctx.bodyValidator(ContextPack.class)
     .check(cp -> cp.name !=null && cp.name.length() > 0)
     .check(cp -> cp.icon !=null)
-    //.check(cp -> cp.wordlist != null )
     .get();
 
     ctxCollection.insertOne(newContextPack);
@@ -82,7 +81,6 @@ public void addNewWordList(Context ctx) {
   WordList newWordList = ctx.bodyValidator(WordList.class)
     .check(wl -> wl.name !=null && wl.name.length() > 0)
     .get();
-  //ContextPack contextPack;
   String id = ctx.pathParam("id");
   ctxCollection.updateById(id, Updates.push("wordlist", newWordList));
 
