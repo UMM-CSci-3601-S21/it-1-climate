@@ -59,6 +59,8 @@ public class Server {
 
     server.start(4567);
 
+
+
     // List users, filtered using query parameters
     server.get("/api/users", userController::getUsers);
 
@@ -79,6 +81,8 @@ public class Server {
 
     server.post("/api/packs", wordRiverController::addNewContextPack);
     server.post("/api/packs/:id", wordRiverController::addNewWordList);
+    server.post("/api/packs/:id/:name", wordRiverController::addNewWord);
+
 
 
     server.exception(Exception.class, (e, ctx) -> {
