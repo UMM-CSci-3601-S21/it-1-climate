@@ -208,6 +208,25 @@ public void AddNewWordList() throws IOException {
 }
 
 @Test
+public void AddNewWord() throws IOException {
+
+  String testNewWordList = "{"
+    + "\"word\": \"Test Word\","
+    + "\"forms\": []"
+    + "}";
+
+    String testID = batmanId.toHexString();
+    mockReq.setBodyContent(testNewWordList);
+    mockReq.setMethod("POST");
+
+
+    Context ctx = ContextUtil.init(mockReq, mockRes, "api/packs/:id/:name", ImmutableMap.of("id", testID, "name", "iron man"));
+    wordRiverController.addNewWord(ctx);
+
+    assertEquals(201, mockRes.getStatus());
+}
+
+@Test
 public void AddInvalidName() throws IOException {
 
   String testNewContextPack = "{"
