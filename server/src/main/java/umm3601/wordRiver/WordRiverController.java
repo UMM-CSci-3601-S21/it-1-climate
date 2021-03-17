@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.google.common.collect.ImmutableMap;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Updates;
+import com.mongodb.internal.validator.UpdateFieldNameValidator;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -96,13 +97,50 @@ public void addNewWord(Context ctx) {
   Word newWord = ctx.bodyValidator(Word.class).get();
   String id = ctx.pathParam("id");
   String wlName = ctx.pathParam("name");
+  String wordType = ctx.pathParam("type");
   ContextPack contextPack = ctxCollection.findOneById(id);
-  String theWlName = contextPack.wordlist.get(0).name;
-  WordList theWordList = contextPack.wordlist.get(0);
-  theWordList.nouns.add(newWord);
-  ctxCollection.updateById(id,Updates.push("wordlist", theWordList));
-  ctx.status(201);
-    ctx.json(ImmutableMap.of("id", id));
+  if(wordType.equals("nouns")){
+  for(int i = 0; i < contextPack.wordlist.size(); i++) {
+    WordList theWordList = contextPack.wordlist.get(i);
+    if (theWordList.name.equals(wlName)){
+      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
+      theWordList.nouns.add(newWord);
+      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
     }
+  }
+}
+else if(wordType.equals("adjectives")) {
+  for(int i = 0; i < contextPack.wordlist.size(); i++) {
+    WordList theWordList = contextPack.wordlist.get(i);
+    if (theWordList.name.equals(wlName)){
+      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
+      theWordList.adjectives.add(newWord);
+      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
+    }
+  }
+}
+else if (wordType.equals("verbs")) {
+  for(int i = 0; i < contextPack.wordlist.size(); i++) {
+    WordList theWordList = contextPack.wordlist.get(i);
+    if (theWordList.name.equals(wlName)){
+      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
+      theWordList.verbs.add(newWord);
+      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
+    }
+  }
+}
+else if (wordType.equals("misc")) {
+  for(int i = 0; i < contextPack.wordlist.size(); i++) {
+    WordList theWordList = contextPack.wordlist.get(i);
+    if (theWordList.name.equals(wlName)){
+      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
+      theWordList.misc.add(newWord);
+      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
+    }
+  }
+}
+    ctx.status(201);
+  ctx.json(ImmutableMap.of("id", id));
+}
 }
 
