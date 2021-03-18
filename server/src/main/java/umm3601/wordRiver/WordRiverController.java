@@ -119,7 +119,7 @@ else if (wordType.equals("verbs")) {
     }
   }
 }
-else if (wordType.equals("misc")) {
+else {
   for(int i = 0; i < contextPack.wordlist.size(); i++) {
     WordList theWordList = contextPack.wordlist.get(i);
     if (theWordList.name.equals(wlName)){
