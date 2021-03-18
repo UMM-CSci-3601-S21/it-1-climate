@@ -5,8 +5,10 @@ import com.mongodb.ServerAddress;
 import com.mongodb.client.*;
 import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
-import com.mongodb.client.model.Sorts;
+
+import org.apache.bcel.generic.GETFIELD;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +41,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class MongoSpec {
 
-  private MongoCollection<Document> userDocuments;
+  private MongoCollection<Document> contextPackDocuments;
 
   static MongoClient mongoClient;
   static MongoDatabase db;
@@ -65,166 +67,74 @@ public class MongoSpec {
 
   @BeforeEach
   public void clearAndPopulateDB() {
-    userDocuments = db.getCollection("users");
-    userDocuments.drop();
-    List<Document> testUsers = new ArrayList<>();
-    testUsers.add(
-      new Document()
-        .append("name", "Chris")
-        .append("age", 25)
-        .append("company", "UMM")
-        .append("email", "chris@this.that"));
-    testUsers.add(
-      new Document()
-        .append("name", "Pat")
-        .append("age", 37)
-        .append("company", "IBM")
-        .append("email", "pat@something.com"));
-    testUsers.add(
-      new Document()
-        .append("name", "Jamie")
-        .append("age", 37)
-        .append("company", "Frogs, Inc.")
-        .append("email", "jamie@frogs.com"));
+   //Setup database
+  contextPackDocuments = db.getCollection("packs");
+  contextPackDocuments.drop();
+  ArrayList<Document> testPacks = new ArrayList<>();
+  testPacks.add(
+    new Document()
+      .append("name", "iron man")
+      .append("icon", "iron.png")
+      .append("enabled", true)
+      .append("wordlist", Arrays.asList(new Document().append("name", "iron man").append("enabled", true)
+      .append("nouns", Arrays.asList(new Document("word", "suit").append("forms", Arrays.asList( "suit", "suits"))))
+      .append("verbs", Arrays.asList(new Document("word", "fight").append("forms", Arrays.asList("fight", "fights"))))
+      .append("adjectives", Arrays.asList(new Document("word", "big").append("forms", Arrays.asList("big", "biggish"))))
+      .append("misc", Arrays.asList(new Document("word", "the").append("forms", Arrays.asList("the")))) )
+      ));
 
-    userDocuments.insertMany(testUsers);
+  testPacks.add(
+    new Document()
+      .append("name", "captain america")
+      .append("icon", "cap.png")
+      .append("enabled", false)
+      .append("wordlist", Arrays.asList(new Document().append("name", "captain america").append("enabled", true)
+      .append("nouns", Arrays.asList(new Document("word", "suit").append("forms", Arrays.asList("suit", "suits"))))
+      .append("verbs", Arrays.asList(new Document("word", "fight").append("forms", Arrays.asList("fight", "fights"))))
+      .append("adjectives", Arrays.asList(new Document("word", "big").append("forms", Arrays.asList( "big","biggish"))))
+      .append("misc", Arrays.asList(new Document("word", "the").append("forms", Arrays.asList("the")))) )
+      ));
+
+  contextPackDocuments.insertMany(testPacks);
   }
 
   private List<Document> intoList(MongoIterable<Document> documents) {
-    List<Document> users = new ArrayList<>();
-    documents.into(users);
-    return users;
+    List<Document> contextPacks = new ArrayList<>();
+    documents.into(contextPacks);
+    return contextPacks;
   }
 
-  private int countUsers(FindIterable<Document> documents) {
-    List<Document> users = intoList(documents);
-    return users.size();
-  }
-
-  @Test
-  public void shouldBeThreeUsers() {
-    FindIterable<Document> documents = userDocuments.find();
-    int numberOfUsers = countUsers(documents);
-    assertEquals(3, numberOfUsers, "Should be 3 total users");
+  private int countContextPacks(FindIterable<Document> documents) {
+    List<Document> contextPacks = intoList(documents);
+    return contextPacks.size();
   }
 
   @Test
-  public void shouldBeOneChris() {
-    FindIterable<Document> documents = userDocuments.find(eq("name", "Chris"));
-    int numberOfUsers = countUsers(documents);
-    assertEquals(1, numberOfUsers, "Should be 1 Chris");
+  public void shouldBeTwoContextPacks() {
+    FindIterable<Document> documents = contextPackDocuments.find();
+    int numberOfUsers = countContextPacks(documents);
+    assertEquals(2, numberOfUsers, "Should be 2 total context packs");
   }
 
   @Test
-  public void shouldBeTwoOver25() {
-    FindIterable<Document> documents = userDocuments.find(gt("age", 25));
-    int numberOfUsers = countUsers(documents);
-    assertEquals(2, numberOfUsers, "Should be 2 over 25");
+  public void shouldBeOneCaptainAmerica() {
+    FindIterable<Document> documents = contextPackDocuments.find(eq("name", "captain america"));
+    int numberOfContextPacks = countContextPacks(documents);
+    assertEquals(1, numberOfContextPacks, "Should be 1 Captain America");
   }
 
   @Test
-  public void over25SortedByName() {
-    FindIterable<Document> documents
-      = userDocuments.find(gt("age", 25))
-      .sort(Sorts.ascending("name"));
-    List<Document> docs = intoList(documents);
-    assertEquals(2, docs.size(), "Should be 2");
-    assertEquals("Jamie", docs.get(0).get("name"), "First should be Jamie");
-    assertEquals("Pat", docs.get(1).get("name"), "Second should be Pat");
+  public void shouldBeOneEnabled() {
+    FindIterable<Document> documents = contextPackDocuments.find(eq("enabled", true));
+    int numberOfContextPacks = countContextPacks(documents);
+    assertEquals(1, numberOfContextPacks, "Should be 1 enabled");
   }
 
   @Test
-  public void over25AndIbmers() {
-    FindIterable<Document> documents
-      = userDocuments.find(and(gt("age", 25),
-      eq("company", "IBM")));
-    List<Document> docs = intoList(documents);
-    assertEquals(1, docs.size(), "Should be 1");
-    assertEquals("Pat", docs.get(0).get("name"), "First should be Pat");
-  }
-
-  @Test
-  public void justNameAndEmail() {
-    FindIterable<Document> documents
-      = userDocuments.find().projection(fields(include("name", "email")));
-    List<Document> docs = intoList(documents);
-    assertEquals(3, docs.size(), "Should be 3");
-    assertEquals("Chris", docs.get(0).get("name"), "First should be Chris");
-    assertNotNull(docs.get(0).get("email"), "First should have email");
-    assertNull(docs.get(0).get("company"), "First shouldn't have 'company'");
-    assertNotNull(docs.get(0).get("_id"), "First should have '_id'");
-  }
-
-  @Test
-  public void justNameAndEmailNoId() {
-    FindIterable<Document> documents
-      = userDocuments.find()
-      .projection(fields(include("name", "email"), excludeId()));
-    List<Document> docs = intoList(documents);
-    assertEquals(3, docs.size(), "Should be 3");
-    assertEquals("Chris", docs.get(0).get("name"), "First should be Chris");
-    assertNotNull(docs.get(0).get("email"), "First should have email");
-    assertNull(docs.get(0).get("company"), "First shouldn't have 'company'");
-    assertNull(docs.get(0).get("_id"), "First should not have '_id'");
-  }
-
-  @Test
-  public void justNameAndEmailNoIdSortedByCompany() {
-    FindIterable<Document> documents
-      = userDocuments.find()
-      .sort(Sorts.ascending("company"))
-      .projection(fields(include("name", "email"), excludeId()));
-    List<Document> docs = intoList(documents);
-    assertEquals(3, docs.size(), "Should be 3");
-    assertEquals("Jamie", docs.get(0).get("name"), "First should be Jamie");
-    assertNotNull(docs.get(0).get("email"), "First should have email");
-    assertNull(docs.get(0).get("company"), "First shouldn't have 'company'");
-    assertNull(docs.get(0).get("_id"), "First should not have '_id'");
-  }
-
-  @Test
-  public void ageCounts() {
-    AggregateIterable<Document> documents
-      = userDocuments.aggregate(
-      Arrays.asList(
-        /*
-         * Groups data by the "age" field, and then counts
-         * the number of documents with each given age.
-         * This creates a new "constructed document" that
-         * has "age" as it's "_id", and the count as the
-         * "ageCount" field.
-         */
-        Aggregates.group("$age",
-          Accumulators.sum("ageCount", 1)),
-        Aggregates.sort(Sorts.ascending("_id"))
-      )
-    );
-    List<Document> docs = intoList(documents);
-    assertEquals(2, docs.size(), "Should be two distinct ages");
-    assertEquals(docs.get(0).get("_id"), 25);
-    assertEquals(docs.get(0).get("ageCount"), 1);
-    assertEquals(docs.get(1).get("_id"), 37);
-    assertEquals(docs.get(1).get("ageCount"), 2);
-  }
-
-  @Test
-  public void averageAge() {
-    AggregateIterable<Document> documents
-      = userDocuments.aggregate(
-      Arrays.asList(
-        Aggregates.group("$company",
-          Accumulators.avg("averageAge", "$age")),
-        Aggregates.sort(Sorts.ascending("_id"))
-      ));
-    List<Document> docs = intoList(documents);
-    assertEquals(3, docs.size(), "Should be three companies");
-
-    assertEquals("Frogs, Inc.", docs.get(0).get("_id"));
-    assertEquals(37.0, docs.get(0).get("averageAge"));
-    assertEquals("IBM", docs.get(1).get("_id"));
-    assertEquals(37.0, docs.get(1).get("averageAge"));
-    assertEquals("UMM", docs.get(2).get("_id"));
-    assertEquals(25.0, docs.get(2).get("averageAge"));
+  public void shouldHaveCapIcon() {
+    FindIterable<Document> documents = contextPackDocuments.find(gt("icon", "cap.png"));
+    int numberOfContextPacks = countContextPacks(documents);
+    assertEquals(1, numberOfContextPacks, "Should be 1 with cap.png");
   }
 
 }

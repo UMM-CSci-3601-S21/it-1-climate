@@ -27,7 +27,6 @@ import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
-import org.eclipse.jetty.util.ajax.JSON;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -230,7 +229,7 @@ public void AddNewWordNoun() throws IOException {
     Document ContextPack = db.getCollection("packs").find(Filters.eq("_id", batmanId)).first();
 
     @SuppressWarnings("unchecked")
-    ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
+    ArrayList<WordList> cpWordLists = (ArrayList<WordList>)ContextPack.get("wordlist");
     String theContextPackWordLists = cpWordLists.toString();
     System.out.println(theContextPackWordLists);
 

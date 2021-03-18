@@ -20,10 +20,6 @@ import io.javalin.http.NotFoundResponse;
 public class WordRiverController {
 
   private final JacksonMongoCollection<ContextPack> ctxCollection;
-  private final JacksonMongoCollection<WordList> wlCollection;
-  private final JacksonMongoCollection<Word> wordCollection;
-
-
 /**
  * Construct a controller for context packs
  *
@@ -32,8 +28,6 @@ public class WordRiverController {
 
  public WordRiverController(MongoDatabase database) {
    ctxCollection = JacksonMongoCollection.builder().build(database, "packs", ContextPack.class);
-   wlCollection = JacksonMongoCollection.builder().build(database, "lists", WordList.class);
-   wordCollection = JacksonMongoCollection.builder().build(database, "words", Word.class);
  }
 
 
