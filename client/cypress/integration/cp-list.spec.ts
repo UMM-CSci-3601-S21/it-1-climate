@@ -12,8 +12,8 @@ describe('Cp List', () => {
         page.navigateTo();
     });
 
-    it('Should have 13 context packs', () => {
-        page.getCpCards().should('have.length', 13);
+    it('Should have 6 context packs', () => {
+        page.getCpCards().should('have.length', 6);
     });
 
     it('Should click "View Context Pack" on a context pack and lead to a valid URL', () => {
@@ -63,7 +63,7 @@ describe('Cp List', () => {
 
          page.getWlCard().should('have.length', 1);
          page.clickNounsButton(page.getWlCard().first());
-         cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}\/Mcfadden\/nouns/);
+         cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}\/Planets\/nouns/);
       });
     });
 
@@ -78,7 +78,7 @@ describe('Cp List', () => {
 
             page.getWlCard().should('have.length', 1);
             page.clickAdjectivesButton(page.getWlCard().first());
-           cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}\/Mcfadden\/adjectives/);
+           cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}\/Planets\/adjectives/);
         });
       });
 
@@ -93,7 +93,7 @@ describe('Cp List', () => {
 
             page.getWlCard().should('have.length', 1);
             page.clickVerbsButton(page.getWlCard().first());
-           cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}\/Mcfadden\/verbs/);
+           cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}\/Planets\/verbs/);
         });
       });
 
@@ -108,7 +108,7 @@ describe('Cp List', () => {
 
             page.getWlCard().should('have.length', 1);
             page.clickMiscButton(page.getWlCard().first());
-           cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}\/Mcfadden\/misc/);
+           cy.url().should('match', /\/packs\/[0-9a-fA-F]{24}\/Planets\/misc/);
         });
       });
 });

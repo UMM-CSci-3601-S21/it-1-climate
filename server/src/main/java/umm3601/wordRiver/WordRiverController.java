@@ -93,19 +93,25 @@ public void addNewWord(Context ctx) {
     WordList theWordList = contextPack.wordlist.get(i);
     if (theWordList.name.equals(wlName)){
       if (wordType.equals("nouns")) {
+        ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
         theWordList.nouns.add(newWord);
+        ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
       }
       else if(wordType.equals("adjectives")) {
+        ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
         theWordList.adjectives.add(newWord);
+        ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
       }
       else if(wordType.equals("verbs")) {
+        ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
         theWordList.verbs.add(newWord);
+        ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
       }
       else {
+        ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
         theWordList.misc.add(newWord);
+        ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
       }
-      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
-      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
     }
   }
   ctx.status(201);
