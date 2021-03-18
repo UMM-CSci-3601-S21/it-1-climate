@@ -89,48 +89,26 @@ public void addNewWord(Context ctx) {
   String wlName = ctx.pathParam("name");
   String wordType = ctx.pathParam("type");
   ContextPack contextPack = ctxCollection.findOneById(id);
-  if(wordType.equals("nouns")){
   for(int i = 0; i < contextPack.wordlist.size(); i++) {
     WordList theWordList = contextPack.wordlist.get(i);
     if (theWordList.name.equals(wlName)){
+      if (wordType.equals("nouns")) {
+        theWordList.nouns.add(newWord);
+      }
+      else if(wordType.equals("adjectives")) {
+        theWordList.adjectives.add(newWord);
+      }
+      else if(wordType.equals("verbs")) {
+        theWordList.verbs.add(newWord);
+      }
+      else {
+        theWordList.misc.add(newWord);
+      }
       ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
-      theWordList.nouns.add(newWord);
       ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
     }
   }
-}
-else if(wordType.equals("adjectives")) {
-  for(int i = 0; i < contextPack.wordlist.size(); i++) {
-    WordList theWordList = contextPack.wordlist.get(i);
-    if (theWordList.name.equals(wlName)){
-      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
-      theWordList.adjectives.add(newWord);
-      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
-    }
-  }
-}
-else if (wordType.equals("verbs")) {
-  for(int i = 0; i < contextPack.wordlist.size(); i++) {
-    WordList theWordList = contextPack.wordlist.get(i);
-    if (theWordList.name.equals(wlName)){
-      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
-      theWordList.verbs.add(newWord);
-      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
-    }
-  }
-}
-else {
-  for(int i = 0; i < contextPack.wordlist.size(); i++) {
-    WordList theWordList = contextPack.wordlist.get(i);
-    if (theWordList.name.equals(wlName)){
-      ctxCollection.updateById(id, Updates.pull("wordlist", theWordList));
-      theWordList.misc.add(newWord);
-      ctxCollection.updateById(id,Updates.push("wordlist",theWordList));
-    }
-  }
-}
-    ctx.status(201);
+  ctx.status(201);
   ctx.json(ImmutableMap.of("id", id));
 }
 }
-

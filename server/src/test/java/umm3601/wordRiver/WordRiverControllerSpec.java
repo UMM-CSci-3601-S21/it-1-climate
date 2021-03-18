@@ -231,7 +231,6 @@ public void AddNewWordNoun() throws IOException {
     @SuppressWarnings("unchecked")
     ArrayList<WordList> cpWordLists = (ArrayList<WordList>)ContextPack.get("wordlist");
     String theContextPackWordLists = cpWordLists.toString();
-    System.out.println(theContextPackWordLists);
 
 
    assertTrue(theContextPackWordLists.contains("Document{{word=Test Word, forms=[test]}}]"));
@@ -262,7 +261,6 @@ public void AddNewWordAdjective() throws IOException {
     @SuppressWarnings("unchecked")
     ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
     String theContextPackWordLists = cpWordLists.toString();
-    System.out.println(theContextPackWordLists);
 
    assertTrue(theContextPackWordLists.contains("Document{{word=Test Word, forms=[test]}}]"));
 }
@@ -290,7 +288,6 @@ public void AddNewWordVerb() throws IOException {
     @SuppressWarnings("unchecked")
     ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
     String theContextPackWordLists = cpWordLists.toString();
-    System.out.println(theContextPackWordLists);
 
 
    assertTrue(theContextPackWordLists.contains("Document{{word=run, forms=[runs]}}]"));
@@ -319,7 +316,6 @@ public void AddNewWordMisc() throws IOException {
     @SuppressWarnings("unchecked")
     ArrayList<WordList> cpWordLists = (ArrayList<WordList>) ContextPack.get("wordlist");
     String theContextPackWordLists = cpWordLists.toString();
-    System.out.println(theContextPackWordLists);
 
 
    assertTrue(theContextPackWordLists.contains("Document{{word=c3po, forms=[c3po]}}]"));
