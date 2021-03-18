@@ -24,14 +24,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { UserListComponent } from './users/user-list.component';
-import { HomeComponent } from './home/home.component';
-import { UserService } from './users/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
-import { UserCardComponent } from './users/user-card.component';
-import { UserProfileComponent } from './users/user-profile.component';
-import { AddUserComponent } from './users/add-user.component';
 import { CpListComponent } from './wordRiver/contextPacks/cp-list.component';
 import { ContextPackService } from './wordRiver/context-pack.service';
 import { CpCardComponent } from './wordRiver/contextPacks/cp-card.component';
@@ -63,11 +57,6 @@ const MATERIAL_MODULES: any[] = [
 @NgModule({
 	declarations: [
 		AppComponent,
-		HomeComponent,
-		UserListComponent,
-		UserCardComponent,
-		UserProfileComponent,
-		AddUserComponent,
 		CpListComponent,
 		CpCardComponent,
 		AddCpComponent,
@@ -88,7 +77,6 @@ const MATERIAL_MODULES: any[] = [
 		LayoutModule,
 	],
 	providers: [
-		UserService,
 		ContextPackService
 	],
 	bootstrap: [AppComponent]
