@@ -1,172 +1,84 @@
 [
   {
     "_id": {
-      "$oid": "604cdf3c1ede03930fd5705c"
-    },
-    "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Phillips",
-    "icon": "example.png",
-    "enabled": true,
-    "wordlist": [
-      {
-        "name": "Mcfadden",
-        "enabled": false,
-        "nouns": [
-          {
-            "word": "Joker",
-            "forms": [
-              "Joker"
-            ]
-          },
-          {
-            "word": "villain",
-            "forms": [
-              "villain, villains"
-            ]
-          }
-        ],
-        "verbs": [
-          {
-            "word": "fly",
-            "forms": [
-              "fly",
-              "flown",
-              "flew"
-            ]
-          },
-          {
-            "word": "dance",
-            "forms": [
-              "dance",
-              "danced"
-            ]
-          },
-          {
-            "word": "steal",
-            "forms": [
-              "steal",
-              "stole"
-            ]
-          },
-          {
-            "word": "laugh",
-            "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
-            ]
-          },
-          {
-            "word": "hide",
-            "forms": [
-              "hide",
-              "hid",
-              "hiding"
-            ]
-          }
-        ],
-        "adjectives": [
-          {
-            "word": "evil",
-            "forms": [
-              "evil"
-            ]
-          },
-          {
-            "word": "sad",
-            "forms": [
-              "sad"
-            ]
-          }
-        ],
-        "misc": [
-          {
-            "word": "the",
-            "forms": [
-              "the"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
       "$oid": "604cdf3c8d7aeecae7797435"
     },
     "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Herrera",
-    "icon": "example.png",
+    "name": "Space",
+    "icon": "https://png.pngtree.com/element_our/sm/20180616/sm_5b24bccfc6eb6.jpg",
     "enabled": true,
     "wordlist": [
       {
-        "name": "Langley",
+        "name": "Planets",
         "enabled": true,
         "nouns": [
           {
-            "word": "Joker",
+            "word": "Uranus",
             "forms": [
-              "Joker"
+              "Uranus"
             ]
           },
           {
-            "word": "villain",
+            "word": "Neptune",
             "forms": [
-              "villain, villains"
+              "Neptune"
             ]
           }
         ],
         "verbs": [
           {
-            "word": "fly",
+            "word": "orbit",
             "forms": [
-              "fly",
-              "flown",
-              "flew"
+              "orbit",
+              "orbits",
+              "orbited"
             ]
           },
           {
-            "word": "dance",
+            "word": "rotate",
             "forms": [
-              "dance",
-              "danced"
+              "rotate",
+              "rotates",
+              "rotated"
             ]
           },
           {
-            "word": "steal",
+            "word": "collide",
             "forms": [
-              "steal",
-              "stole"
+              "collide",
+              "collides",
+              "collided"
             ]
           },
           {
-            "word": "laugh",
+            "word": "tilt",
             "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
+              "tilt",
+              "tilts",
+              "tilted"
             ]
           },
           {
-            "word": "hide",
+            "word": "pull",
             "forms": [
-              "hide",
-              "hid",
-              "hiding"
+              "pull",
+              "pulls",
+              "pulled"
             ]
           }
         ],
         "adjectives": [
           {
-            "word": "evil",
+            "word": "big",
             "forms": [
-              "evil"
+              "big",
+              "biggest"
             ]
           },
           {
-            "word": "sad",
+            "word": "gas",
             "forms": [
-              "sad"
+              "gas"
             ]
           }
         ],
@@ -186,41 +98,44 @@
       "$oid": "604cdf3c63292e16753345f8"
     },
     "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Armstrong",
-    "icon": "example.png",
+    "name": "Candy",
+    "icon": "https://png.pngtree.com/png-vector/20190121/ourmid/pngtree-sweets-snack-cartoon-candy-png-image_519737.jpg",
     "enabled": false,
     "wordlist": [
       {
-        "name": "Vaughn",
+        "name": "Hard Candy",
         "enabled": false,
         "nouns": [
           {
-            "word": "Joker",
+            "word": "Skittles",
             "forms": [
-              "Joker"
+              "Skittles",
+              "Skittle"
             ]
           },
           {
-            "word": "villain",
+            "word": "Nerds",
             "forms": [
-              "villain, villains"
+              "Nerds",
+              "Nerd"
             ]
           }
         ],
         "verbs": [
           {
-            "word": "fly",
+            "word": "taste",
             "forms": [
-              "fly",
-              "flown",
-              "flew"
+              "taste",
+              "tastes",
+              "tasted"
             ]
           },
           {
-            "word": "dance",
+            "word": "stain",
             "forms": [
-              "dance",
-              "danced"
+              "stain",
+              "stains",
+              "stained"
             ]
           },
           {
@@ -231,11 +146,11 @@
             ]
           },
           {
-            "word": "laugh",
+            "word": "giggle",
             "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
+              "giggle",
+              "giggles",
+              "giggled"
             ]
           },
           {
@@ -249,15 +164,16 @@
         ],
         "adjectives": [
           {
-            "word": "evil",
+            "word": "tasty",
             "forms": [
-              "evil"
+              "tasty",
+              "tastiest"
             ]
           },
           {
-            "word": "sad",
+            "word": "sour",
             "forms": [
-              "sad"
+              "sour"
             ]
           }
         ],
@@ -277,48 +193,52 @@
       "$oid": "604cdf3c6e9fddd6dd231502"
     },
     "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Blair",
-    "icon": "example.png",
+    "name": "Computers",
+    "icon": "https://image.flaticon.com/icons/png/512/2933/2933245.png",
     "enabled": false,
     "wordlist": [
       {
-        "name": "Arnold",
+        "name": "Types",
         "enabled": true,
         "nouns": [
           {
-            "word": "Joker",
+            "word": "laptop",
             "forms": [
-              "Joker"
+              "laptop",
+              "laptops"
             ]
           },
           {
-            "word": "villain",
+            "word": "desktop",
             "forms": [
-              "villain, villains"
+              "desktop",
+              "desktops"
             ]
           }
         ],
         "verbs": [
           {
-            "word": "fly",
+            "word": "buy",
             "forms": [
-              "fly",
-              "flown",
-              "flew"
+              "buy",
+              "buys",
+              "bought"
             ]
           },
           {
-            "word": "dance",
+            "word": "crash",
             "forms": [
-              "dance",
-              "danced"
+              "crash",
+              "crashes",
+              "crashed"
             ]
           },
           {
-            "word": "steal",
+            "word": "hack",
             "forms": [
-              "steal",
-              "stole"
+              "hack",
+              "hacks",
+              "hacked"
             ]
           },
           {
@@ -330,25 +250,25 @@
             ]
           },
           {
-            "word": "hide",
+            "word": "build",
             "forms": [
-              "hide",
-              "hid",
-              "hiding"
+              "build",
+              "builds",
+              "built"
             ]
           }
         ],
         "adjectives": [
           {
-            "word": "evil",
+            "word": "32-bit",
             "forms": [
-              "evil"
+              "32-bit"
             ]
           },
           {
-            "word": "sad",
+            "word": "64-bit",
             "forms": [
-              "sad"
+              "64-bit"
             ]
           }
         ],
@@ -385,7 +305,8 @@
           {
             "word": "villain",
             "forms": [
-              "villain, villains"
+              "villain",
+              "villains"
             ]
           }
         ],
@@ -459,78 +380,83 @@
       "$oid": "604cdf3cf3b95a22288fd043"
     },
     "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Kayla",
-    "icon": "example.png",
+    "name": "Footwear",
+    "icon": "https://i.ytimg.com/vi/bmHmo6G7UhA/sddefault.jpg",
     "enabled": false,
     "wordlist": [
       {
-        "name": "Whitney",
+        "name": "Tennis Shoes",
         "enabled": false,
         "nouns": [
           {
-            "word": "Joker",
+            "word": "sneaker",
             "forms": [
-              "Joker"
+              "sneaker",
+              "sneakers"
             ]
           },
           {
-            "word": "villain",
+            "word": "Thomas Jefferson's 76s",
             "forms": [
-              "villain, villains"
+              "Thomas Jefferson's 76s"
             ]
           }
         ],
         "verbs": [
           {
-            "word": "fly",
+            "word": "walk",
             "forms": [
-              "fly",
-              "flown",
-              "flew"
+              "walk",
+              "walks",
+              "walked"
             ]
           },
           {
-            "word": "dance",
+            "word": "jog",
             "forms": [
-              "dance",
-              "danced"
+              "jog",
+              "jogs",
+              "jogged"
             ]
           },
           {
-            "word": "steal",
+            "word": "run",
             "forms": [
-              "steal",
-              "stole"
+              "run",
+              "runs",
+              "ran"
             ]
           },
           {
-            "word": "laugh",
+            "word": "trip",
             "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
+              "trip",
+              "trips",
+              "tripped"
             ]
           },
           {
-            "word": "hide",
+            "word": "tie",
             "forms": [
-              "hide",
-              "hid",
-              "hiding"
+              "tie",
+              "ties",
+              "tied"
             ]
           }
         ],
         "adjectives": [
           {
-            "word": "evil",
+            "word": "big",
             "forms": [
-              "evil"
+              "big",
+              "biggest"
             ]
           },
           {
-            "word": "sad",
+            "word": "small",
             "forms": [
-              "sad"
+              "small",
+              "smallest"
             ]
           }
         ],
@@ -545,637 +471,93 @@
       }
     ]
   },
-  {
-    "_id": {
-      "$oid": "604cdf3c2efb666636031fb6"
-    },
-    "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Burris",
-    "icon": "example.png",
-    "enabled": false,
-    "wordlist": [
-      {
-        "name": "Poole",
-        "enabled": true,
-        "nouns": [
-          {
-            "word": "Joker",
-            "forms": [
-              "Joker"
-            ]
-          },
-          {
-            "word": "villain",
-            "forms": [
-              "villain, villains"
-            ]
-          }
-        ],
-        "verbs": [
-          {
-            "word": "fly",
-            "forms": [
-              "fly",
-              "flown",
-              "flew"
-            ]
-          },
-          {
-            "word": "dance",
-            "forms": [
-              "dance",
-              "danced"
-            ]
-          },
-          {
-            "word": "steal",
-            "forms": [
-              "steal",
-              "stole"
-            ]
-          },
-          {
-            "word": "laugh",
-            "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
-            ]
-          },
-          {
-            "word": "hide",
-            "forms": [
-              "hide",
-              "hid",
-              "hiding"
-            ]
-          }
-        ],
-        "adjectives": [
-          {
-            "word": "evil",
-            "forms": [
-              "evil"
-            ]
-          },
-          {
-            "word": "sad",
-            "forms": [
-              "sad"
-            ]
-          }
-        ],
-        "misc": [
-          {
-            "word": "the",
-            "forms": [
-              "the"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "$oid": "604cdf3c0f981d2bacb187e5"
-    },
-    "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Darlene",
-    "icon": "example.png",
-    "enabled": true,
-    "wordlist": [
-      {
-        "name": "Mitchell",
-        "enabled": true,
-        "nouns": [
-          {
-            "word": "Joker",
-            "forms": [
-              "Joker"
-            ]
-          },
-          {
-            "word": "villain",
-            "forms": [
-              "villain, villains"
-            ]
-          }
-        ],
-        "verbs": [
-          {
-            "word": "fly",
-            "forms": [
-              "fly",
-              "flown",
-              "flew"
-            ]
-          },
-          {
-            "word": "dance",
-            "forms": [
-              "dance",
-              "danced"
-            ]
-          },
-          {
-            "word": "steal",
-            "forms": [
-              "steal",
-              "stole"
-            ]
-          },
-          {
-            "word": "laugh",
-            "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
-            ]
-          },
-          {
-            "word": "hide",
-            "forms": [
-              "hide",
-              "hid",
-              "hiding"
-            ]
-          }
-        ],
-        "adjectives": [
-          {
-            "word": "evil",
-            "forms": [
-              "evil"
-            ]
-          },
-          {
-            "word": "sad",
-            "forms": [
-              "sad"
-            ]
-          }
-        ],
-        "misc": [
-          {
-            "word": "the",
-            "forms": [
-              "the"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "$oid": "604cdf3ca536adfe32098a52"
-    },
-    "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Elaine",
-    "icon": "example.png",
-    "enabled": false,
-    "wordlist": [
-      {
-        "name": "Velazquez",
-        "enabled": true,
-        "nouns": [
-          {
-            "word": "Joker",
-            "forms": [
-              "Joker"
-            ]
-          },
-          {
-            "word": "villain",
-            "forms": [
-              "villain, villains"
-            ]
-          }
-        ],
-        "verbs": [
-          {
-            "word": "fly",
-            "forms": [
-              "fly",
-              "flown",
-              "flew"
-            ]
-          },
-          {
-            "word": "dance",
-            "forms": [
-              "dance",
-              "danced"
-            ]
-          },
-          {
-            "word": "steal",
-            "forms": [
-              "steal",
-              "stole"
-            ]
-          },
-          {
-            "word": "laugh",
-            "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
-            ]
-          },
-          {
-            "word": "hide",
-            "forms": [
-              "hide",
-              "hid",
-              "hiding"
-            ]
-          }
-        ],
-        "adjectives": [
-          {
-            "word": "evil",
-            "forms": [
-              "evil"
-            ]
-          },
-          {
-            "word": "sad",
-            "forms": [
-              "sad"
-            ]
-          }
-        ],
-        "misc": [
-          {
-            "word": "the",
-            "forms": [
-              "the"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "$oid": "604cdf3cafacd4fba940b683"
-    },
-    "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Bianca",
-    "icon": "example.png",
-    "enabled": true,
-    "wordlist": [
-      {
-        "name": "Allison",
-        "enabled": true,
-        "nouns": [
-          {
-            "word": "Joker",
-            "forms": [
-              "Joker"
-            ]
-          },
-          {
-            "word": "villain",
-            "forms": [
-              "villain, villains"
-            ]
-          }
-        ],
-        "verbs": [
-          {
-            "word": "fly",
-            "forms": [
-              "fly",
-              "flown",
-              "flew"
-            ]
-          },
-          {
-            "word": "dance",
-            "forms": [
-              "dance",
-              "danced"
-            ]
-          },
-          {
-            "word": "steal",
-            "forms": [
-              "steal",
-              "stole"
-            ]
-          },
-          {
-            "word": "laugh",
-            "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
-            ]
-          },
-          {
-            "word": "hide",
-            "forms": [
-              "hide",
-              "hid",
-              "hiding"
-            ]
-          }
-        ],
-        "adjectives": [
-          {
-            "word": "evil",
-            "forms": [
-              "evil"
-            ]
-          },
-          {
-            "word": "sad",
-            "forms": [
-              "sad"
-            ]
-          }
-        ],
-        "misc": [
-          {
-            "word": "the",
-            "forms": [
-              "the"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "$oid": "604cdf3c7fba77bf49d436d9"
-    },
-    "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Taylor",
-    "icon": "example.png",
-    "enabled": true,
-    "wordlist": [
-      {
-        "name": "Harrison",
-        "enabled": false,
-        "nouns": [
-          {
-            "word": "Joker",
-            "forms": [
-              "Joker"
-            ]
-          },
-          {
-            "word": "villain",
-            "forms": [
-              "villain, villains"
-            ]
-          }
-        ],
-        "verbs": [
-          {
-            "word": "fly",
-            "forms": [
-              "fly",
-              "flown",
-              "flew"
-            ]
-          },
-          {
-            "word": "dance",
-            "forms": [
-              "dance",
-              "danced"
-            ]
-          },
-          {
-            "word": "steal",
-            "forms": [
-              "steal",
-              "stole"
-            ]
-          },
-          {
-            "word": "laugh",
-            "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
-            ]
-          },
-          {
-            "word": "hide",
-            "forms": [
-              "hide",
-              "hid",
-              "hiding"
-            ]
-          }
-        ],
-        "adjectives": [
-          {
-            "word": "evil",
-            "forms": [
-              "evil"
-            ]
-          },
-          {
-            "word": "sad",
-            "forms": [
-              "sad"
-            ]
-          }
-        ],
-        "misc": [
-          {
-            "word": "the",
-            "forms": [
-              "the"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "$oid": "604cdf3c13a8fee651780c5b"
-    },
-    "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Vanessa",
-    "icon": "example.png",
-    "enabled": false,
-    "wordlist": [
-      {
-        "name": "Flowers",
-        "enabled": false,
-        "nouns": [
-          {
-            "word": "Joker",
-            "forms": [
-              "Joker"
-            ]
-          },
-          {
-            "word": "villain",
-            "forms": [
-              "villain, villains"
-            ]
-          }
-        ],
-        "verbs": [
-          {
-            "word": "fly",
-            "forms": [
-              "fly",
-              "flown",
-              "flew"
-            ]
-          },
-          {
-            "word": "dance",
-            "forms": [
-              "dance",
-              "danced"
-            ]
-          },
-          {
-            "word": "steal",
-            "forms": [
-              "steal",
-              "stole"
-            ]
-          },
-          {
-            "word": "laugh",
-            "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
-            ]
-          },
-          {
-            "word": "hide",
-            "forms": [
-              "hide",
-              "hid",
-              "hiding"
-            ]
-          }
-        ],
-        "adjectives": [
-          {
-            "word": "evil",
-            "forms": [
-              "evil"
-            ]
-          },
-          {
-            "word": "sad",
-            "forms": [
-              "sad"
-            ]
-          }
-        ],
-        "misc": [
-          {
-            "word": "the",
-            "forms": [
-              "the"
-            ]
-          }
-        ]
-      }
-    ]
-  },
+
   {
     "_id": {
       "$oid": "604cdf3cdff2cdad83f8303c"
     },
     "schema": "https://raw.githubusercontent.com/kidstech/story-builder/master/Assets/packs/schema/pack.schema.json",
-    "name": "Kelley",
-    "icon": "example.png",
+    "name": "Music",
+    "icon": "https://www.clipartmax.com/png/middle/24-242834_guitar-music-rock-guitar-guitar-guitar-gui-electric-guitar-png-vector.png",
     "enabled": false,
     "wordlist": [
       {
-        "name": "Richardson",
+        "name": "Rock n' Roll",
         "enabled": false,
         "nouns": [
           {
-            "word": "Joker",
+            "word": "Guns N' Rose",
             "forms": [
-              "Joker"
+              "Guns N' Rose"
             ]
           },
           {
-            "word": "villain",
+            "word": "AC/DC",
             "forms": [
-              "villain, villains"
+              "AC/DC"
             ]
           }
         ],
         "verbs": [
           {
-            "word": "fly",
+            "word": "flip",
             "forms": [
-              "fly",
-              "flown",
-              "flew"
+              "flip",
+              "flips",
+              "flipped"
             ]
           },
           {
-            "word": "dance",
+            "word": "rock",
             "forms": [
-              "dance",
-              "danced"
+              "rocks",
+              "rocked"
             ]
           },
           {
-            "word": "steal",
+            "word": "smash",
             "forms": [
-              "steal",
-              "stole"
+              "smash",
+              "smashes",
+              "smashed"
             ]
           },
           {
-            "word": "laugh",
+            "word": "play",
             "forms": [
-              "laugh",
-              "laughed",
-              "laughing"
+              "play",
+              "plays",
+              "played"
             ]
           },
           {
-            "word": "hide",
+            "word": "sing",
             "forms": [
-              "hide",
-              "hid",
-              "hiding"
+              "sing",
+              "sings",
+              "sang"
             ]
           }
         ],
         "adjectives": [
           {
-            "word": "evil",
+            "word": "good",
             "forms": [
-              "evil"
+              "good"
             ]
           },
           {
-            "word": "sad",
+            "word": "wicked",
             "forms": [
-              "sad"
+              "wicked"
             ]
           }
         ],
         "misc": [
           {
-            "word": "the",
+            "word": "off",
             "forms": [
-              "the"
+              "off"
             ]
           }
         ]

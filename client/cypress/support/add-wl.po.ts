@@ -3,7 +3,7 @@ import {WordList} from 'src/app/wordRiver/word-list';
 export class AddWordListPage {
 
   navigateTo() {
-    return cy.visit('/packs/604cdf3cafacd4fba940b683/new');
+    return cy.visit('/packs/604cdf3c8d7aeecae7797435/new');
   }
 
   getTitle() {
