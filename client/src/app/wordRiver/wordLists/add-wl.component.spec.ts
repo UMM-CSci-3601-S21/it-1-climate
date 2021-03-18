@@ -83,6 +83,7 @@ describe('AddWlComponent', () => {
     it('should allow digits in the name', () => {
       nameControl.setValue('Iron Man 2');
       expect(nameControl.valid).toBeTruthy();
+      addWordList.submitForm();
     });
   });
 
