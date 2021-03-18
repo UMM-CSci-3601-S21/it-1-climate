@@ -54,6 +54,7 @@ export class AddWlComponent implements OnInit {
   }
 
   submitForm() {
+    try{
     this.cpService.addWordList(this.addWordListForm.value).subscribe(newID => {
       this.snackBar.open('Added the ' + this.addWordListForm.value.name + ' word list successfully', null, {
         duration: 2000,
@@ -66,5 +67,9 @@ export class AddWlComponent implements OnInit {
       });
     });
   }
+  catch{
 
+  }
 }
+}
+

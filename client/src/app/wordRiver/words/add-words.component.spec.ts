@@ -57,11 +57,13 @@ describe('AddWordsComponent', () => {
     expect(addWordForm.valid).toBeFalsy();
   });
 
-  describe('The word field', () => {
+  describe('The word  and form field', () => {
     let wordControl: AbstractControl;
+    let formControl: AbstractControl;
 
     beforeEach(() => {
       wordControl = addWordsComponent.addWordForm.controls.word;
+      formControl = addWordsComponent.addWordForm.controls.forms;
     });
 
     it('should not allow empty words', () => {
@@ -84,7 +86,13 @@ describe('AddWordsComponent', () => {
       wordControl.setValue('n00b');
       expect(wordControl.valid).toBeTruthy();
     });
+
+    it('should allow superhero, superheroes ', () => {
+      wordControl.setValue('superhero');
+      formControl.setValue('superhero, superheroes');
+      addWordsComponent.submitForm();
   });
+});
 
   describe('separateForms()', () => {
 
@@ -97,4 +105,5 @@ describe('AddWordsComponent', () => {
 
     });
   });
+
 });

@@ -44,6 +44,7 @@ export class AddWordsComponent implements OnInit {
     });
   }
   submitForm(){
+    try{
     const realForm = this.separateForms(this.addWordForm.value.forms);
     this.addWordForm.value.forms = realForm;
     console.log(this.addWordForm.value.forms);
@@ -58,22 +59,28 @@ export class AddWordsComponent implements OnInit {
       });
     });
   }
+  catch{
+  }
+}
 
   separateForms(forms: string): Array<string> {
     let form = '';
+    const trimmed = forms.trim();
     const allForms = new Array<string>();
-    for(let i = 0; i < forms.length; i++) {
-      if(forms.substring(i, i + 1) === ',') {
+    for(let i = 0; i < trimmed.length; i++) {
+      if(trimmed.substring(i, i + 1) === ',') {
         allForms.push(form);
         form = '';
-      }else if(forms.substring(i, i + 1) === ' ') {
+      }else if(trimmed.substring(i, i + 1) === ' ' && trimmed.substring(i - 1, i) === ',') {
       }
       else{
-      form = form + forms.substring(i, i + 1);
+      form = form + trimmed.substring(i, i + 1);
       console.log(form);
       }
     }
-    allForms.push(form);
+    if( form !== '') {
+      allForms.push(form);
+    }
     return allForms;
   }
 
